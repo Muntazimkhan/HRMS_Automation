@@ -21,6 +21,7 @@
     "cypress": "^14.5.1"
   },
   "devDependencies": {
+    "cypress-downloadfile": "^1.2.4",
     "cypress-xpath": "^2.0.1"
   }
 }
