@@ -29,6 +29,18 @@ jobs:
       - name: Run Cypress Tests
         run: npx cypress run
 
+      - name: Merge Mochawesome JSON files
+        run: npx mochawesome-merge cypress/reports/*.json > mochawesome.json
+
+      - name: Generate Mochawesome HTML Report
+        run: npx marge mochawesome.json -f report -o mochawesome-report
+
+      - name: Upload Mochawesome Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-report
+          path: mochawesome-report
+
       - name: Upload Videos
         if: always()
         uses: actions/upload-artifact@v4
@@ -42,3 +54,12 @@ jobs:
         with:
           name: cypress-screenshots
           path: cypress/screenshots
+
+      - name: Notify Slack on Failure
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{
+            "text":"❌ *Cypress Tests FAILED* in `HRMS_Automation` repo.\nCheck the run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+            "username":"CI Bot",
+            "icon_emoji":":x:"
+          }' ${{ secrets.SLACK_WEBHOOK_URL }}
