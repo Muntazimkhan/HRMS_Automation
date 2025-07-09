@@ -13,8 +13,12 @@ jobs:
     container:
       image: cypress/browsers:node-20.10.0-chrome-124-ff-126-edge-124
 
+    env:
+      VALID_EMAIL: ${{ vars.VALID_EMAIL }}
+      VALID_PASSWORD: ${{ secrets.VALID_PASSWORD }}
+
     steps:
-      - name: Checkout Repository
+      - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Install Dependencies
