@@ -12,3 +12,4 @@ Cypress.Commands.add('login', (email, password) => {
 });
 require('cypress-xpath');
 import 'cypress-downloadfile/lib/downloadFileCommand';
+import 'cypress-file-upload';

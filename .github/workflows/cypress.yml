@@ -55,11 +55,4 @@ jobs:
           name: cypress-screenshots
           path: cypress/screenshots
 
-      - name: Notify Slack on Failure
-        if: failure()
-        run: |
-          curl -X POST -H 'Content-type: application/json' --data '{
-            "text":"❌ *Cypress Tests FAILED* in `HRMS_Automation` repo.\nCheck the run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
-            "username":"CI Bot",
-            "icon_emoji":":x:"
-          }' ${{ secrets.SLACK_WEBHOOK_URL }}
+      
