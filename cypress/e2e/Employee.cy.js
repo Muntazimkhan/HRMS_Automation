@@ -96,5 +96,6 @@ describe('Manage Employee', () => {
 
     cy.get('button[type="submit"]').click();
 
+
     })
 });
