@@ -18,17 +18,32 @@ describe('Timesheet Navigation', () => {
 
     // Step 4: Confirm page has loaded
     cy.contains('h4', 'Manage Timesheet', { timeout: 10000 }).should('be.visible');
+    
+    //Import and Export functionality
+    cy.get('.ti.ti-file-export').click();
+    cy.wait(2000);
+    cy.get('[data-url="https://iaoai.io/hrmsv2/import/timesheet/file"]').click({force: true});
+    cy.wait(2000);
+    cy.get('input[type="file"]').attachFile('timesheet.csv');
+    cy.wait(2000);
+    cy.get('.modal-footer > .btn-primary').click();
+
+    //Delete Employee
+
+cy.get(".ti.ti-trash.text-white.text-white").eq(-2).click({ force: true });
+cy.get('.swal2-confirm').click();
+cy.get(".ti.ti-trash.text-white.text-white").eq(-1).click({ force: true });
+cy.get('.swal2-confirm').click();
 
     //Filter
+    // cy.get('#current_date').type('2025-06-29');
+    // cy.get('#current_date').type('2025-07-10');
+    // cy.get('#employee_id').select('Muntazim Khan k36', { force: true });
+    // cy.get('.col-auto > .btn-primary').click();
+    // cy.wait(2000);
 
-    cy.get('#current_date').type('2025-06-29');
-    cy.get('#current_date').type('2025-07-10');
-    cy.get('#employee_id').select('Muntazim Khan k36', { force: true });
-    cy.get('.col-auto > .btn-primary').click();
-    cy.wait(2000);
-
-    // Reset Filter
-    cy.get('.btn-danger').click();
+    // // Reset Filter
+    // cy.get('.btn-danger').click();
 
     
 
