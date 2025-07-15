@@ -14,19 +14,20 @@ describe('Indicator', () =>{
 
     cy.get(".btn.btn-sm.btn-primary").click()
     cy.get('.form-group > .choices > .choices__inner').click();
-    cy.wait(2000);
     cy.get('.choices__list--dropdown').contains('Client').click({force: true});
-
     cy.get('.choices__inner').eq(1).click()
-    cy.wait(2000);
     cy.get('.choices__list--dropdown').contains('Project').click({force: true});
+    cy.get('select[name="designation"]').select('Designation');    
+    cy.get('[for="technical-4-19"]').click();
+    cy.get('#submitBtn').click();
+    cy.get('.d-flex').should('contain.text', 'Indicator successfully created.');
 
-//     cy.get('#choices-multiple').click();
-//   cy.contains('Designation', { timeout: 10000 }).click({ force: true });
-//     // cy.wait(2000);
-//     // cy.get('.choices__list--dropdown').contains('Designation').click({force: true});
+    //Delete Indicator
 
-
+    cy.get('.ti.ti-trash.text-white.text-white').last().click();
+    cy.wait(2000);
+    cy.get('.swal2-confirm.btn.btn-success').click();
+    cy.get('#liveToast').should('contain.text', 'Indicator successfully deleted.');
 
     })
 })

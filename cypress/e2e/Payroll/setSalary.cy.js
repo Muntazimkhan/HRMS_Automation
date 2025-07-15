@@ -9,7 +9,7 @@ describe('Set Salary for Employee', () => {
         cy.get('span.dash-mtext').contains('Payroll').click();
         cy.get('a.dash-link').contains('Set Salary').click();
 
-        //Download the Export Payslip
+       // Download the Export Payslip
         cy.get('#export-payslip').click();
         cy.wait(3000);
         cy.get('#export-wps').click();
@@ -18,11 +18,15 @@ describe('Set Salary for Employee', () => {
         //View and set salary for an employee
         cy.get('.mx-3.btn.btn-sm.align-items-center').eq(0).click();
         cy.contains('Employee Set Salary').should('be.visible');
+                cy.wait(3000);
+
 
         //emoloyee salary
         cy.get('.btn.btn-sm.btn-primary').eq(0).click();
         cy.get('#salary').clear().type('50000');
         cy.get('.modal-footer > .btn-primary').click();
+                cy.wait(3000);
+
 
         //Set Allowance
         cy.get('.btn.btn-sm.btn-primary').eq(1).click();
@@ -31,6 +35,8 @@ describe('Set Salary for Employee', () => {
         cy.get('#type').select('Percentage');
         cy.get('#amount').clear().type('100').should('have.value', '100');
         cy.get('[type="submit"]').click();
+                cy.wait(3000);
+
 
         //Set Commission
         cy.get('.btn.btn-sm.btn-primary').eq(2).click();
@@ -38,27 +44,37 @@ describe('Set Salary for Employee', () => {
         cy.get("#type").select('Fixed');
         cy.get('#amount').clear().type('5000').should('have.value', '5000');
         cy.get('[type="submit"]').click();
+                cy.wait(3000);
 
-        // Set Loan  
+
+        // Set Loan
         cy.get('.btn.btn-sm.btn-primary').eq(3).click();
+
+        // Fill in the loan title
         cy.get('#title').type('New Loan');
         cy.get(':nth-child(2) > .choices > .choices__inner').click();
-        cy.get('.choices__list--dropdown').should('be.visible').contains('SuvastuTech_Loan').click();
-        cy.get(':nth-child(3) > .choices > .choices__inner').click();
-        cy.get('.choices__list--dropdown').should('be.visible').contains('Fixed').click();
-        cy.get('#amount').type('10')
-        cy.get('#reason').type('Home Loan')
+        cy.get('.choices__list').should('be.visible').contains('SuvastuTech_Loan').click();
+        // Enter Loan Amount
+        cy.get('#amount').type('10');
+        // Enter Reason
+        cy.get('#reason').type('Home Loan');
+        // Submit the form
         cy.get('[type="submit"]').click();
+                cy.wait(3000);
 
-        //Set Deduction
+
+
+        //Set Saturation Deduction
         cy.get('.btn.btn-sm.btn-primary').eq(4).click();
         cy.get(':nth-child(1) > .choices > .choices__inner').click();
         cy.get('.choices__list--dropdown').should('be.visible').contains('GOSI').click();
-        cy.get('#title').type('GOSI Deduction');
+        cy.get('#title').type('GOSI Deduction', {force: true});
         cy.get(':nth-child(3) > .choices > .choices__inner').click();
         cy.get('.choices__list--dropdown').should('be.visible').contains('Percentage').click();
         cy.get('#amount').type('10');
         cy.get('[type="submit"]').click();
+                cy.wait(3000);
+
 
         //Set other Payment
         cy.get('.btn.btn-sm.btn-primary').eq(5).click();
@@ -67,6 +83,8 @@ describe('Set Salary for Employee', () => {
         cy.get('.choices__list--dropdown').should('be.visible').contains('Fixed').click();
         cy.get('#amount').type('1000').should('have.value', '1000');
         cy.get('[type="submit"]').click();
+                cy.wait(3000);
+
 
         //Set Overtime
         cy.get('.btn.btn-sm.btn-primary').eq(6).click();
@@ -80,11 +98,6 @@ describe('Set Salary for Employee', () => {
         cy.get('#calculate').click();
         cy.get('#overTime_rate').should('have.value', '437500.00000000006');
         cy.get('.modal-footer > .btn-primary').click();
-
-        
-
-
-
 
     })
 })

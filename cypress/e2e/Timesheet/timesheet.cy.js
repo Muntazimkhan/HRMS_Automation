@@ -36,14 +36,14 @@ cy.get(".ti.ti-trash.text-white.text-white").eq(-1).click({ force: true });
 cy.get('.swal2-confirm').click();
 
     //Filter
-    // cy.get('#current_date').type('2025-06-29');
-    // cy.get('#current_date').type('2025-07-10');
-    // cy.get('#employee_id').select('Muntazim Khan k36', { force: true });
-    // cy.get('.col-auto > .btn-primary').click();
-    // cy.wait(2000);
+    cy.get('#current_date').type('2025-06-29');
+    cy.get('#current_date').type('2025-07-10');
+    cy.get('#employee_id').select('Muntazim Khan k36', { force: true });
+    cy.get('.col-auto > .btn-primary').click();
+    cy.wait(2000);
 
-    // // Reset Filter
-    // cy.get('.btn-danger').click();
+    // Reset Filter
+    cy.get('.btn-danger').click();
 
     
 
