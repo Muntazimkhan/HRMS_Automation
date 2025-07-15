@@ -44,8 +44,5 @@ describe('Manage Balance', () => {
     cy.get('.swal2-confirm.btn.btn-success').click();
     cy.get('#liveToast').should('contain.text', 'TransferBalance successfully deleted.');
 
-
-
-
     })
 })

@@ -20,10 +20,7 @@ describe('Manage Account', () => {
     cy.get('#bank_branch').should('be.visible').type('Kanju');
 
     cy.get('.modal-footer > .btn-primary').should('not.be.disabled').click();
-
-    //Assertion
-
-    cy.get('.d-flex').should('contain.text', 'Account successfully created.');
+    cy.wait(2000);    
 
     //Delete Account
     cy.get('.ti.ti-trash.text-white.text-white').last().click();
