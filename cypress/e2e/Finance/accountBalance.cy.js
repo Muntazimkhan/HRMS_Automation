@@ -9,7 +9,7 @@ describe('Account Balance', () => {
     it('Check the Account Balance functionality', () => {
     cy.contains('span.dash-mtext', 'Finance').click();
     cy.get('.dash-trigger > .dash-submenu > :nth-child(2) > .dash-link').should('be.visible').click();
-
+        //assertion
     cy.get('.m-b-10').contains('Manage Account Balances').should('be.visible');    
 })
 })
