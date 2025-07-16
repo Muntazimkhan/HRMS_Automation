@@ -49,7 +49,7 @@ describe('Manage Employee', () => {
     cy.get("div[class='city_div'] div[class='choices__inner']").click()
     cy.get('.choices__list').contains('Mardan').click({ force: true });
     cy.get('#email').type('abcd@abcd.com');
-    cy.get('#password').type('12345678');
+    cy.get('#password').type('Manual@1aw');
     cy.get("div[class='national_div'] div[class='choices__inner']").click();
     cy.get('.choices__list').contains('Pakistani').click({ force: true });
     cy.get('.choices__inner').eq(4).click();
@@ -71,7 +71,8 @@ describe('Manage Employee', () => {
     cy.get('#probation_period').type('2024-10-01');
     cy.get('.col-md-4 > .form-icon-user > .choices > .choices__inner').click();
     cy.get('.choices__list').contains('Arshad').click({ force: true });
-    cy.get('input[type="file"]').attachFile('FKD.jpg');
+
+    cy.get('input[type="file"][id="document[12]"]').attachFile('Image.jpg');
     cy.get('.bg-primary.document.cursor-pointer').scrollIntoView().click();
     cy.get('.form-group > .form-check-input').check();
 
@@ -94,8 +95,9 @@ describe('Manage Employee', () => {
     cy.wait(3000);
     cy.get('.choices__list').contains('SuvastuTech_Designation').click({ force: true });
 
-    cy.get('button[type="submit"]').click();
+    // cy.get('.float-end > .btn').click();
 
 
     })
-});
+})
+
