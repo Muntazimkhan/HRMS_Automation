@@ -7,6 +7,7 @@ module.exports = defineConfig({
   video: true,
 
   e2e: {
+    baseUrl: 'https://iaoai.io/hrmsv2/demo/login',
     retries: {
       runMode: 2,
       openMode: 0
@@ -15,6 +16,8 @@ module.exports = defineConfig({
       VALID_EMAIL: 'muntazim.khan+company@suvastutech.com',
       VALID_PASSWORD: 'Info@2024#',
     },
-    baseUrl: 'https://iaoai.io/hrmsv2/demo/login',
+    setupNodeEvents(on, config) {
+      // You can implement node-level event handlers here if needed
+    },
   },
 });

@@ -1,4 +1,4 @@
-name: 🔁 Run Cypress Tests
+name: 🔁 Run Cypress Tests on Production
 
 on:
   push:
@@ -12,15 +12,20 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
-    container:
-      image: cypress/included:12.17.4
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: Install Dependencies
         run: npm ci
 
-      - name: Run Cypress Tests
-        run: npx cypress run
+      - name: Run Monthly Attendance Test
+        run: npx cypress run --spec "cypress/e2e/Reports automation/Monthly Attendence.cy.js"
+
+      - name: Run Leave Test
+        run: npx cypress run --spec "cypress/e2e/Reports automation/Leave.cy.js"

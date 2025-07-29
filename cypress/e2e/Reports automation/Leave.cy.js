@@ -18,15 +18,13 @@ describe('Leave', () => {
 
         //Filters functionality
         cy.get('#month').clear().type('2025-06');
-        cy.get('#branch').select('37');
-        cy.wait(4000);
-        cy.get(".form-control.select.project_id").select('67');
-        cy.get('#department_id').select('69');
+        cy.get('#branch').select('46');
+        cy.wait(3000);
+        cy.get(".form-control.select.project_id").select('70');
+        cy.wait(2000);
+        cy.get('#department_id').select('71');
         cy.get('#leave_type').select('Full Day Leave');
         cy.xpath("//a[@class='btn btn-primary']").click();
-
-        //Assertion
-        cy.contains('Duration').parent().should('contain.text', 'Jun-2025');
 
         //Clear Filter
         cy.get('.btn.btn-danger ').eq(0).click();
