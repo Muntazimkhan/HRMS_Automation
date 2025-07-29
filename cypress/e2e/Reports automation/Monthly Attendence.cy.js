@@ -22,8 +22,9 @@ describe('Monthly Attendance', () => {
     cy.get('#month').clear().type('2025-06');
 
     cy.xpath("//select[@id='branch-select branch_id']").then(($select) => {
-      const exists = [...$select[0].options].some(o => o.value === '37');
-      if (exists) {
+      const options = [...$select[0].options].map(o => o.value);
+      cy.log('Branch options:', options);
+      if (options.includes('37')) {
         cy.wrap($select).select('37');
       } else {
         cy.log('🚫 Branch option 37 not found');
@@ -31,8 +32,9 @@ describe('Monthly Attendance', () => {
     });
 
     cy.get('#project_id').then(($select) => {
-      const exists = [...$select[0].options].some(o => o.value === '67');
-      if (exists) {
+      const options = [...$select[0].options].map(o => o.value);
+      cy.log('Project options:', options);
+      if (options.includes('67')) {
         cy.wrap($select).select('67');
       } else {
         cy.log('🚫 Project option 67 not found');
@@ -40,21 +42,24 @@ describe('Monthly Attendance', () => {
     });
 
     cy.get('#department_id').then(($select) => {
-      const exists = [...$select[0].options].some(o => o.value === '69');
-      if (exists) {
+      const options = [...$select[0].options].map(o => o.value);
+      cy.log('Department options:', options);
+      if (options.includes('69')) {
         cy.wrap($select).select('69');
       } else {
         cy.log('🚫 Department option 69 not found');
       }
     });
 
-    // Select employee from dropdown (if visible)
     cy.get('.choices__inner').click({ force: true });
+
     cy.get('.choices__list--dropdown').then($list => {
-      if ($list.text().includes('Muntazim User')) {
+      const userFound = $list.text().includes('Muntazim User');
+      cy.log('Dropdown Users:', $list.text());
+      if (userFound) {
         cy.wrap($list).contains('Muntazim User').click({ force: true });
       } else {
-        cy.log('🚫 "Muntazim User" not found in employee dropdown');
+        cy.log('🚫 "Muntazim User" not found in dropdown');
       }
     });
 
