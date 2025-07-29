@@ -24,8 +24,6 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Run Monthly Attendance Test
-        run: npx cypress run --spec "cypress/e2e/Reports automation/Monthly Attendence.cy.js"
+      - name: Run All Cypress Tests
+        run: npx cypress run
 
-      - name: Run Leave Test
-        run: npx cypress run --spec "cypress/e2e/Reports automation/Leave.cy.js"
