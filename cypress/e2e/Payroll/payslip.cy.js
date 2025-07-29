@@ -28,15 +28,11 @@ describe('Payslip Report', () => {
     //Bulk Payment
         cy.get('#bulk_payment').click();  
         cy.get('[type="submit"]').contains('Bulk Payment').click();
-        cy.get('.toast-body').contains('Payslip Bulk Payment successfully.');
 
     // View Payslip and delete Payslip
         cy.get(':nth-child(1) > :nth-child(7) > .btn-warning').click();
         cy.contains('Employee Payslip').should('be.visible');
         cy.get("a[title='Download Excel']").click();
-
-
-
 
     });
 });

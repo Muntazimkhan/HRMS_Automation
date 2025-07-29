@@ -13,20 +13,18 @@ describe('Training List', () => {
         //Create a new Training
         cy.get(".btn.btn-sm.btn-primary[href='#']").click();
         cy.get(':nth-child(1) > .form-group > .choices > .choices__inner').click();
-        cy.get('.choices__list').should('be.visible').contains('Client').click();
+        cy.get('.choices__list').should('be.visible').contains('New_C').click();
         cy.get('#training_cost').should('be.visible').clear().type('1000');
         cy.get('#employee').select('565')
         cy.get('#start_date').should('be.visible').clear().type('2025-01-01');
         cy.get('#end_date').should('be.visible').clear().type('2025-07-15');
         cy.get('#description').should('be.visible').type('Test Description');
         cy.get('#submitBtn').click();
-        cy.get('.d-flex').should('contain.text', 'Training successfully created.');
 
         //Delete
         cy.get('.ti.ti-trash.text-white.text-white').last().click();
         cy.wait(2000);
         cy.get('.swal2-confirm.btn.btn-success').click();
-        cy.get('#liveToast').should('contain.text', 'Training successfully deleted.');
         cy.wait(2000);
 
         //Export

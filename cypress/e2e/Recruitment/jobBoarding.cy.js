@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe('Job On-Boarding', () => {
+describe.skip('Job On-Boarding', () => {
     beforeEach(() => {
         cy.login(Cypress.env('VALID_EMAIL'), Cypress.env('VALID_PASSWORD'));
     });

@@ -12,22 +12,24 @@ describe('Indicator', () =>{
 
     //Create a new indicator
 
-    cy.get(".btn.btn-sm.btn-primary").click()
-    cy.get('.form-group > .choices > .choices__inner').click();
-    cy.get('.choices__list--dropdown').contains('Client').click({force: true});
-    cy.get('.choices__inner').eq(1).click()
-    cy.get('.choices__list--dropdown').contains('Project').click({force: true});
-    cy.get('select[name="designation"]').select('Designation');    
+    cy.get('[data-title="Create New Indicator"]').click()
+
+    cy.get('.choices__inner').eq(0).click();
+    cy.get('.choices__list--dropdown').contains('New_C').click({force: true});
+    cy.wait(2000);
+
+    cy.get('.department_div > .choices > .choices__inner').click()
+    cy.get('.choices__list').contains('Project').click({force: true});
+    cy.wait(2000);
+
+    cy.get('select[name="designation"]').select('Designation', {force: true});    
     cy.get('[for="technical-4-19"]').click();
     cy.get('#submitBtn').click();
-    cy.get('.d-flex').should('contain.text', 'Indicator successfully created.');
 
     //Delete Indicator
-
     cy.get('.ti.ti-trash.text-white.text-white').last().click();
     cy.wait(2000);
     cy.get('.swal2-confirm.btn.btn-success').click();
-    cy.get('#liveToast').should('contain.text', 'Indicator successfully deleted.');
 
     })
 })

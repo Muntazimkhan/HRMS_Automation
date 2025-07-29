@@ -1,7 +1,7 @@
 // cypress/support/e2e.js
 
-// Import custom commands
-import './commands'
+// ✅ Import custom commands using CommonJS
+require('./commands');
 
 // Set a consistent viewport for all tests
 beforeEach(() => {

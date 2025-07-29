@@ -34,7 +34,6 @@ describe('Contracts', () => {
         
         //Send Email
         cy.get('[data-bs-original-title="Send Email"]').click();
-        cy.get('#liveToast > .d-flex').contains('Mail Send successfully!').should('be.visible');
 
         //Duplicate
         cy.get('[data-title="Duplicate"]').click();

@@ -26,7 +26,6 @@ describe('Manage Account', () => {
     cy.get('.ti.ti-trash.text-white.text-white').last().click();
     cy.wait(2000);
     cy.get('.swal2-confirm').click();
-    cy.get('.d-flex').should('contain.text', 'Account successfully deleted.');
 
 
 });

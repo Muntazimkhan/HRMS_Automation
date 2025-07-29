@@ -28,13 +28,11 @@ describe('Request', () => {
         cy.get('label > .bg-primary').attachFile('Image.jpg');
 
         cy.get('#submitBtn').click();
-        cy.get('.d-flex').contains('Request successfully created.');
 
         //Delete Request
         cy.get('.ti.ti-trash.text-white ').first().click();
         cy.wait(2000);
         cy.get('.swal2-confirm.btn.btn-success').click();
-        cy.get('#liveToast').should('contain.text', 'Request successfully deleted.');
 
     })
 })

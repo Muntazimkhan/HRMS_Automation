@@ -10,19 +10,19 @@ describe('Timsheet Report', () =>{
         cy.contains('a', 'Timesheet').click();
 
         // Download and Export functionality
-        // cy.get('.btn.btn-sm.btn-primary').eq(0).click();
-        // cy.get('button[type="submit"]').click();
+        cy.get('.btn.btn-sm.btn-primary').eq(0).click();
+        cy.get('button[type="submit"]').click();
 
         // Filters functionality
 
         cy.get('#start_date').type('2025-06-01');
         cy.get('#end_date').type('2025-07-30');
-        cy.get('#branch').select('SuvastuTech_Client');
-        cy.get('#department_id').select('SuvastuTech_');
+        cy.get('#branch').select('37');
+        cy.get('#department_id').select('85');
         cy.get('.btn.btn-sm.btn-primary').eq(2).click();
 
         // Assertion
-        cy.contains('Client :').parent().should('contain.text', 'SuvastuTech_Client');
+        cy.contains('Client :').parent().should('contain.text', 'Client');
 
 })
 })

@@ -13,7 +13,7 @@ Cypress.Commands.add('login', (email, password) => {
   cy.get('button[type="submit"]').click();
 });
 
-// Plugin support
-require('cypress-xpath'); // CommonJS style plugin (MUST use require here)
-import 'cypress-downloadfile/lib/downloadFileCommand'; // ES6 import
-import 'cypress-file-upload'; // ES6 import
+// ✅ Use CommonJS syntax consistently
+require('cypress-xpath');
+require('cypress-downloadfile/lib/downloadFileCommand');
+require('cypress-file-upload');

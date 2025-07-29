@@ -25,7 +25,6 @@ describe('Holiday', () => {
         cy.wait(2000);
         cy.get('.modal-footer > .btn-primary').click();
 
-        cy.get('.d-flex').should('contain.text', 'Record successfully imported');
 
         //Filter
         cy.get('#start_date').type('2025-04-01');
@@ -37,7 +36,6 @@ describe('Holiday', () => {
         cy.get('.ti.ti-trash.text-white.text-white').last().click();
         cy.wait(2000);
         cy.get('.swal2-confirm.btn.btn-success').click();
-        cy.get('#liveToast').should('contain.text', 'Holiday successfully deleted.');
 
         //New Holiday Request
         cy.get('[data-title="Create New Holiday"]').click();

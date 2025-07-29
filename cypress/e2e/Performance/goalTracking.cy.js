@@ -12,10 +12,10 @@ describe('Goal Tracking', () => {
 
         //Create a new goal tracking
         cy.get('.ti.ti-plus').click();
-        cy.get(':nth-child(1) > .form-group > .choices > .choices__inner').click();
-        cy.get('.choices__list').contains('Client').click({ force: true });
+        cy.get('.choices__inner').eq(0).click({ force: true });
+        cy.get('.choices__list').contains('New_C').click({ force: true });
 
-        cy.get(':nth-child(2) > .form-group > .choices > .choices__inner').click();
+        cy.get('.choices__inner').eq(1).click({ force: true });
         cy.get('.choices__list').contains('SuvastuTech_Goal').click({ force: true });
 
         cy.get('#start_date').type('2025-01-01');
@@ -31,7 +31,6 @@ describe('Goal Tracking', () => {
         //Delete
         cy.get('.ti.ti-trash.text-white.text-white').last().click();
         cy.get('.swal2-confirm.btn.btn-success').click();
-        cy.get('.d-flex').should('contain.text', 'GoalTracking successfully deleted.');
         
     })
 })

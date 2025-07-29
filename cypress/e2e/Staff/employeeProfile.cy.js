@@ -12,9 +12,9 @@ describe('Employee Report', () => {
 
         //Filters functionality
         cy.get('.ti.ti-filter').click();
-        cy.get('#branch_id').select('SuvastuTech_Client')
-        cy.get(':nth-child(1) > .btn-box > #department_id').select('SuvastuTech_');
-        cy.get('#designation_id').select('SuvastuTech_Designation');
+        cy.get('#branch_id').select('37')
+        cy.get(':nth-child(1) > .btn-box > #department_id').select('67');
+        cy.get('#designation_id').select('184');
         cy.get('.ti.ti-search').click();
 
 

@@ -18,10 +18,10 @@ describe('Leave', () => {
 
         //Filters functionality
         cy.get('#month').clear().type('2025-06');
-        cy.get('#branch').select('SuvastuTech_Client');
+        cy.get('#branch').select('37');
         cy.wait(4000);
-        cy.get(".form-control.select.project_id").select('SuvastuTech_');
-        cy.get('#department_id').select('SuvastuTech');
+        cy.get(".form-control.select.project_id").select('67');
+        cy.get('#department_id').select('69');
         cy.get('#leave_type').select('Full Day Leave');
         cy.xpath("//a[@class='btn btn-primary']").click();
 

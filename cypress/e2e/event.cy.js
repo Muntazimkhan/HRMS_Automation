@@ -20,6 +20,14 @@ describe('Event', () => {
         cy.get('.choices__list').should('be.visible').contains('Arshad').click();
 
         cy.get('#title').should('be.visible').type('Test Event');
+        cy.get('#start_date').should('be.visible').clear().type('2025-07-01');
+        cy.get('#end_date').should('be.visible').clear().type('2025-09-01');
+        cy.get('#start_time').should('be.visible').clear().type('10:00');   // 10:00 AM
+        cy.wait(2000);
+        cy.get('#end_time').should('be.visible').clear().type('22:00');    // 10:00 PM
+        cy.get('.btn.bg-success.p-3').should('be.visible').click();
+        cy.get('#description').should('be.visible').type('Test Description');
+        cy.get('#submitBtn').click();
 
 
     })

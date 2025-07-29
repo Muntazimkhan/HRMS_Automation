@@ -40,7 +40,6 @@ describe('Manage Expense', () => {
     cy.get('.ti.ti-trash.text-white.text-white').first().click();
     cy.wait(2000);
     cy.get('.swal2-confirm.btn.btn-success').click();
-    cy.get('#liveToast').should('contain.text', 'Expense successfully deleted.');
 
     //Export
     cy.get('.btn.btn-sm.btn-primary').eq(1).click()

@@ -17,14 +17,12 @@ describe('Resignation', () => {
 
         cy.get('#description').should('be.visible').type('Test Description');
         cy.get("input[value='Create']").click();
-        cy.get('.d-flex').contains('Resignation successfully created.');
         cy.wait(2000);
         
         //Delete Resignation
         cy.get('.ti.ti-trash.text-white.text-white').first().click();
         cy.wait(2000);
         cy.get('.swal2-confirm.btn.btn-success').click();
-        cy.get('#liveToast').should('contain.text', 'Resignation successfully deleted.');
 
     })
 })

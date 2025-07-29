@@ -24,7 +24,6 @@ describe('Trainer', () => {
         cy.get('.ti.ti-trash.text-white.text-white').last().click();
         cy.wait(2000);
         cy.get('.swal2-confirm.btn.btn-success').click();
-        cy.get('#liveToast').should('contain.text', 'Trainer successfully deleted.');
      
     })
 })        

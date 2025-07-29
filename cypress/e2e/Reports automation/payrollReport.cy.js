@@ -14,9 +14,9 @@ describe('Payroll Report', () => {
 
         // Filters functionality
         cy.get('#month').type('2025-06');
-        cy.get('#branch').select('SuvastuTech_Client');
-        cy.get('#project_id').select('SuvastuTech_');
-        cy.get('#department_id').select('SuvastuTech');
+        cy.get('#branch').select('New_C');
+        cy.get('#project_id').select('Project');
+        cy.get('#department_id').select('New Depart');
         cy.get('.btn.btn-sm.btn-primary').eq(2).click();
 
         // Assertion

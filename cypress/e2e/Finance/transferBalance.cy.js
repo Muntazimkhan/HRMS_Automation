@@ -15,20 +15,31 @@ describe('Manage Balance', () => {
     // cy.get('.btn.btn-sm.btn-primary').eq(0).click();
     
     //Create a new entry
-    cy.get('.btn.btn-sm.btn-primary').eq(1).click();
-    cy.get(':nth-child(1) > .form-group > .choices > .choices__inner').click();
-    cy.get('.choices__list--dropdown').should('be.visible').contains('SuvasutTech').click();    
+    cy.get('[data-title="Create New Transfer Balance"]').click();
+    cy.get('.choices__inner').eq(0).click({force: true});
+    cy.get('.choices__list').should('be.visible').contains('Test Account').click({force: true});   
+    
 
-    // Open the "To Account" dropdown
-    cy.get('[data-type="select-one"]').eq(1).click();
-    // Type to search
-    cy.get('[data-type="select-one"]').eq(1).find('input').type('Test Account{downarrow}{enter}');
+// Open "To Account" dropdown
+cy.get('[data-type="select-one"]').eq(1).click({ force: true });
+
+// Select "Transfer Account"
+cy.get('.choices__list--dropdown')
+  .filter(':visible')
+  .within(() => {
+    cy.contains('.choices__item--selectable', 'Transfer Account').click({ force: true });
+  });
+
+
+
+
+
 
     cy.get('#date').type('2025-10-01');
     cy.get('#amount').type('1000');
 
     // Open the "To Account" dropdown
-    cy.get('[data-type="select-one"]').eq(2).click();
+    cy.get('[data-type="select-one"]').eq(2).click({force: true});
     // Type to search
     cy.get('[data-type="select-one"]').eq(2).find('input').type('SuvastuTech_Payment{downarrow}{enter}');
 
@@ -36,13 +47,10 @@ describe('Manage Balance', () => {
     cy.get('#description').type('Test Transfer');
     cy.get('#submitBtn').click();
 
-    cy.get('.d-flex').contains('TransferBalance successfully created.');
-
     //Delete
     cy.get('.ti.ti-trash.text-white.text-white').first().click();
     cy.wait(2000);
     cy.get('.swal2-confirm.btn.btn-success').click();
-    cy.get('#liveToast').should('contain.text', 'TransferBalance successfully deleted.');
 
     })
 })

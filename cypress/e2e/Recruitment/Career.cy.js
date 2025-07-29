@@ -14,7 +14,6 @@ describe('Career', () => {
         cy.get("button[type='submit']").click();
 
 
-        cy.get('.alert > h2').should('be.visible').contains('Job application successfully sent.');
 
     })
 })

@@ -12,7 +12,7 @@ describe('Payslip Report', () => {
     // Add new shift
     cy.get('.btn.btn-sm.btn-primary').click();
     cy.get('#title').type('Test Shift');
-    cy.get('#shift_start_time').type('14:00');
+    cy.get('#shift_start_time').type('14:00', { force: true });
     cy.get('#shift_end_time').type('20:00');
     cy.get('#shift_half_day_mark').type('16:00');
     cy.get('#early_clock_in').type('13');
@@ -24,7 +24,7 @@ describe('Payslip Report', () => {
     cy.wait(2000);
 
     // // Delete the shift
-    cy.get('.ti.ti-trash.text-white').eq(4).click();
+    cy.get('.ti.ti-trash.text-white').last().click();
     cy.get('.swal2-confirm').click();
     cy.get('.d-flex').contains('Shift successfully deleted.').should('be.visible');
     cy.wait(2000);
@@ -41,14 +41,14 @@ describe('Payslip Report', () => {
     cy.get('#liveToast').contains('Shift successfully updated.').should('be.visible');
 
     //Remove and Assign Bulk Shift
-    cy.get('#branch_id').select('Client');
+    cy.get('#branch_id').select('New_C');
     cy.get('#department_id').select('New Depart', {force: true});
     cy.get('#employee_id').select('Muntazim User',{force: true})
     cy.wait(2000);
 
     //Remove
     cy.get('.btn.btn-danger').click();
-    cy.get('#bulk_branch_id').select('Client');
+    cy.get('#bulk_branch_id').select('New_C');
     cy.get('.choices__inner').click();
     cy.get('.choices__list--dropdown').contains('New Depart').click({force: true});
     cy.get('.bulk_employee_div > .choices > .choices__inner').click();
@@ -62,7 +62,7 @@ describe('Payslip Report', () => {
     //Assign
     cy.get('[data-url="https://iaoai.io/hrmsv2/shift/bulk/assign"]').click({force: true});
     cy.wait(2000);
-    cy.get('#bulk_branch_id').select('Client');
+    cy.get('#bulk_branch_id').select('New_C');
     cy.get('.choices__inner').click();
     cy.get('.choices__list--dropdown').contains('New Depart').click({force: true});
     cy.get('.bulk_employee_div > .choices > .choices__inner').click();

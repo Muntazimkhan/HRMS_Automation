@@ -16,16 +16,17 @@
   "main": "index.js",
   "scripts": {
     "test": "node -r dotenv/config ./node_modules/.bin/cypress run",
-    "cypress:open": "cypress open"
-  },
-  "dependencies": {
-    "cypress": "^14.5.1"
+    "cypress:open": "cypress open",
+    "postinstall": "npx cypress verify"
   },
   "devDependencies": {
+    "cypress": "^14.5.2",
     "cypress-downloadfile": "^1.2.4",
     "cypress-file-upload": "^5.0.8",
     "cypress-xpath": "^2.0.1",
     "dotenv": "^17.2.0",
+    "eslint": "^9.31.0",
+    "prettier": "^3.6.2",
     "xlsx": "^0.18.5"
   }
 }

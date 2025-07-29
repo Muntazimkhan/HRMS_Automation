@@ -31,11 +31,12 @@ describe('Manage Employee', () => {
     cy.wait(2000);
     cy.get('.swal2-confirm').click();
     cy.get('.d-flex').should('contain.text', 'Employee successfully deleted.');
+
     
   });
 
-  // Test to create a new employee
-  it.only('Create a new employee', () =>{
+  // Create a new employee
+  it('Create a new employee', () =>{
     cy.contains('span.dash-mtext', 'Employee').click();
 
     cy.xpath("//section[@class='dash-container']//a[3]").click();
@@ -79,23 +80,29 @@ describe('Manage Employee', () => {
     // Step 1: Open the "Select Client" dropdown
     cy.get('.choices__inner').eq(9).click({ force: true });
     // Step 2: Wait for dropdown list and click the correct entry
-    cy.get('.choices__list--dropdown .choices__item').contains('SuvastuTech_Client').scrollIntoView().click({ force: true });
+    cy.get('.choices__list--dropdown .choices__item').contains('New_C').scrollIntoView().click({ force: true });
 
     cy.get('.choices__inner').eq(10).click();
     cy.wait(3000);
-    cy.get('.choices__list--dropdown .choices__item').contains(/^SuvastuTech_$/, { matchCase: false }).scrollIntoView().click({ force: true });
+    cy.get('.choices__list--dropdown .choices__item').contains(/^Project$/, { matchCase: false }).scrollIntoView().click({ force: true });
 
     cy.get('.sub_department_div .choices__inner').click({ force: true });
 
     // Wait for the dropdown list to be visible before selecting
     cy.get('.sub_department_div .choices__list--dropdown').should('be.visible');
 
-    cy.get('.sub_department_div .choices__list--dropdown .choices__item').contains(/^SuvastuTech$/, { matchCase: false }).click({ force: true });
-    cy.get('.choices__inner').eq(12).click();
+    cy.get('.sub_department_div .choices__list--dropdown .choices__item').contains(/^New Depart$/, { matchCase: false }).click({ force: true });
+    cy.get('.designation_div > .choices > .choices__inner').click();
     cy.wait(3000);
-    cy.get('.choices__list').contains('SuvastuTech_Designation').click({ force: true });
+    cy.get('.choices__list').contains(/^Designation$/, { matchCase: false }).click({ force: true });
 
-    // cy.get('.float-end > .btn').click();
+    cy.get('.float-end > .btn').click();
+
+    //Delete the imported employee
+    cy.get('.ti.ti-trash.text-white.text-white').last().click();
+    cy.wait(2000);
+    cy.get('.swal2-confirm').click();
+    cy.get('.d-flex').should('contain.text', 'Employee successfully deleted.');
 
 
     })

@@ -21,16 +21,17 @@ describe('Monthly Attendance', () => {
         //Filters
         cy.get('#month').clear().type('2025-06');
 
-        cy.xpath("//select[@id='branch-select branch_id']").select('SuvastuTech_Client');
+        cy.xpath("//select[@id='branch-select branch_id']").select('37');
         
-        cy.get("#project_id").select('SuvastuTech_');
+        cy.get("#project_id").select('67');
         
-        cy.get("#department_id").select('SuvastuTech');
+        cy.get("#department_id").select('69');
         
-        cy.xpath('//*[@id="choices--employee_id-item-choice-2"]').click({force: true});
+        cy.get('.choices__inner').click({force: true});
+        cy.get('.choices__list--dropdown').contains('Muntazim User').click({force: true});
 
+        cy.get('.ti.ti-search').click();
 
-        cy.get('a.btn.btn-sm.btn-primary').eq(2).click();
         //Assertion
         cy.contains('Duration').parent().should('contain.text', 'Jun-2025');
     });

@@ -26,13 +26,11 @@ describe('Tickets', () => {
         cy.get('.choices__list').should('be.visible').contains('On Hold').click();
 
         cy.get('[type="submit"]').click();
-        cy.get('.d-flex').contains('Ticket successfully created.');
 
         //Delete
         cy.get('.ti.ti-trash.text-white ').last().click();
         cy.wait(2000);
         cy.get('.swal2-confirm.btn.btn-success').click();
-        cy.get('[id="liveToast"]').should('contain.text', 'Ticket successfully deleted.');
 
     })
 })

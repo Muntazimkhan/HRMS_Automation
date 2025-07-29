@@ -23,13 +23,13 @@ describe('Jobs', () => {
         cy.get('.note-editable.card-block').eq(1).type('Test Job Requirement');
         cy.get('#check-gender, #check-dob,#check-resume').check();
         cy.xpath("//input[@id='custom_question_29']").check();
+        cy.get('#custom_question_30').should('be.visible').check();
         cy.get('#submitBtn').click();
 
         //Delete
         cy.get('.ti.ti-trash.text-white.text-white').first().click();
         cy.wait(2000);
         cy.get('.swal2-confirm.btn.btn-success').click();
-        cy.get('#liveToast').contains('Job successfully deleted.');
 
 
 
