@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: 🔁 Run Cypress Tests
 
 on:
   push:
@@ -12,31 +12,15 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
+    container:
+      image: cypress/included:12.17.4
+
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm ci
 
-      - name: Run Cypress tests
+      - name: Run Cypress Tests
         run: npx cypress run
-
-      - name: Upload test screenshots on failure
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-
-      - name: Upload videos
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-videos
-          path: cypress/videos
