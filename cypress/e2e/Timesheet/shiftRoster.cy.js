@@ -42,17 +42,18 @@ describe('Payslip Report', () => {
 
     //Remove and Assign Bulk Shift
     cy.get('#branch_id').select('New_C');
-    cy.get('#department_id').select('New Depart', {force: true});
-    cy.get('#employee_id').select('Muntazim User',{force: true})
+    cy.get('#department_id').select('Department', {force: true});
+    cy.wait(2000);
+    cy.get('#employee_id').select('Muntazim Khan k36',{force: true})
     cy.wait(2000);
 
     //Remove
     cy.get('.btn.btn-danger').click();
     cy.get('#bulk_branch_id').select('New_C');
     cy.get('.choices__inner').click();
-    cy.get('.choices__list--dropdown').contains('New Depart').click({force: true});
+    cy.get('.choices__list--dropdown').contains('Department').click({force: true});
     cy.get('.bulk_employee_div > .choices > .choices__inner').click();
-    cy.get('.choices__list--dropdown').should('be.visible').contains('Muntazim User').click({force: true});
+    cy.get('.choices__list--dropdown').should('be.visible').contains('Muntazim Khan k36').click({force: true});
 
     cy.get("div[class='form-icon-user'] div[class='choices__inner']").click();
     cy.get('.choices__list--dropdown').should('be.visible').contains('Evening shift').click({ force: true });
@@ -63,10 +64,12 @@ describe('Payslip Report', () => {
     cy.get('[data-url="https://iaoai.io/hrmsv2/shift/bulk/assign"]').click({force: true});
     cy.wait(2000);
     cy.get('#bulk_branch_id').select('New_C');
-    cy.get('.choices__inner').click();
-    cy.get('.choices__list--dropdown').contains('New Depart').click({force: true});
-    cy.get('.bulk_employee_div > .choices > .choices__inner').click();
-    cy.get('.choices__list--dropdown').should('be.visible').contains('Muntazim User').click({force: true});
+    cy.wait(2000);
+    cy.get('.bulk_department_div > .choices > .choices__inner').click({ force: true });
+    cy.get('.choices__list').contains('Department').click({ force: true });    
+
+    cy.get('.bulk_employee_div > .choices > .choices__inner').click({ force: true });
+    cy.get('.choices__list').contains('Muntazim Khan k36').click({ force: true }); 
 
     cy.get("div[class='form-icon-user'] div[class='choices__inner']").click();
     cy.get('.choices__list--dropdown').should('be.visible').contains('Evening shift').click({ force: true });

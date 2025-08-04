@@ -15,7 +15,7 @@ describe('Training List', () => {
         cy.get(':nth-child(1) > .form-group > .choices > .choices__inner').click();
         cy.get('.choices__list').should('be.visible').contains('New_C').click();
         cy.get('#training_cost').should('be.visible').clear().type('1000');
-        cy.get('#employee').select('565')
+        cy.get('#employee').select('Muntazim Khan k36');
         cy.get('#start_date').should('be.visible').clear().type('2025-01-01');
         cy.get('#end_date').should('be.visible').clear().type('2025-07-15');
         cy.get('#description').should('be.visible').type('Test Description');

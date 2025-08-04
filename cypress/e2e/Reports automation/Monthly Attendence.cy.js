@@ -20,7 +20,6 @@ describe('Monthly Attendance', () => {
 
     // Filters
     cy.get('#month').clear().type('2025-06');
-    cy.wait(2000);
 
     cy.xpath("//select[@id='branch-select branch_id']").then(($select) => {
       const options = [...$select[0].options].map(o => o.value);
@@ -31,7 +30,6 @@ describe('Monthly Attendance', () => {
         cy.log('🚫 Branch option 37 not found');
       }
     });
-    cy.wait(2000);
 
     cy.get('#project_id').then(($select) => {
       const options = [...$select[0].options].map(o => o.value);
@@ -42,7 +40,6 @@ describe('Monthly Attendance', () => {
         cy.log('🚫 Project option 67 not found');
       }
     });
-    cy.wait(2000);
 
     cy.get('#department_id').then(($select) => {
       const options = [...$select[0].options].map(o => o.value);
@@ -53,7 +50,6 @@ describe('Monthly Attendance', () => {
         cy.log('🚫 Department option 69 not found');
       }
     });
-    cy.wait(2000);
 
     cy.get('.choices__inner').click({ force: true });
 
@@ -66,7 +62,6 @@ describe('Monthly Attendance', () => {
         cy.log('🚫 "Muntazim User" not found in dropdown');
       }
     });
-    cy.wait(2000);
 
     cy.get('.ti.ti-search').click();
 

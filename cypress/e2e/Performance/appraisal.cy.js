@@ -12,7 +12,7 @@ describe('Appraisal', () => {
     //Create a new appraisal
     cy.get(".btn.btn-sm.btn-primary").click()
     cy.get("#brances").select('37');
-    cy.get("#employee").select('565');
+    cy.get("#employee").select('Muntazim Khan k36');
     cy.get("#current_month").type('2025-06');
     cy.get('#remark').type('Testing Remarks');   
 

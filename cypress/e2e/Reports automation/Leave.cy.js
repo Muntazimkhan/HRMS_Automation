@@ -18,7 +18,6 @@ describe('Leave', () => {
 
     // Filters
     cy.get('#month').clear().type('2025-06');
-    cy.wait(2000);
 
     cy.get('#branch').then(($select) => {
       const options = [...$select[0].options].map(o => o.value);
@@ -29,7 +28,6 @@ describe('Leave', () => {
         cy.log('🚫 Branch option 37 not found');
       }
     });
-    cy.wait(2000);
 
     cy.get('.form-control.select.project_id').then(($select) => {
       const options = [...$select[0].options].map(o => o.value);
@@ -40,7 +38,7 @@ describe('Leave', () => {
         cy.log('🚫 Project option 67 not found');
       }
     });
-    cy.wait(2000);
+
     cy.get('#department_id').then(($select) => {
       const options = [...$select[0].options].map(o => o.value);
       cy.log('Department options:', options);
@@ -50,7 +48,6 @@ describe('Leave', () => {
         cy.log('🚫 Department option 69 not found');
       }
     });
-    cy.wait(2000);
 
     cy.get('#leave_type').then(($select) => {
       const texts = [...$select[0].options].map(o => o.textContent);
@@ -61,7 +58,6 @@ describe('Leave', () => {
         cy.log('🚫 Leave type "Full Day Leave" not found');
       }
     });
-    cy.wait(2000);
 
     cy.xpath("//a[@class='btn btn-primary']").click();
 

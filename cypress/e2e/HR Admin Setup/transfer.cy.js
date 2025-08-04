@@ -30,8 +30,7 @@ describe('Transfer', () => {
 
 
         // Delete the most recent row with "Test Description"
-        cy.contains('td', 'Test Description').first().parent('tr').find('.ti-trash').click({ force: true });
-
+        cy.get('.ti.ti-trash.text-white.text-white').last().click({ force: true });
         cy.get('.swal2-confirm.btn.btn-success').click();
 
     });

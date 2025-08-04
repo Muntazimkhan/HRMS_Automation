@@ -16,11 +16,11 @@ describe('Marked Attendance', () => {
     cy.get('#month').type('2025-06', { force: true });
     cy.get('#branch_id').select('67');
     cy.wait(500); 
-    cy.get('#department_id').select('New Depart', { force: true });
+    cy.get('#department_id').select('Department', { force: true });
     cy.wait(1000);
-    cy.get('#department_id').select('New Depart', { force: true });
+    cy.get('#department_id').select('Department', { force: true });
     cy.wait(1000); 
-    cy.get('#employee_id').select('Muntazim User');
+    cy.get('#employee_id').select('Muntazim Khan k36');
     cy.wait(1000);
     cy.get('.ti.ti-search').click()
     cy.wait(1000);
