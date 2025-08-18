@@ -11,7 +11,7 @@ describe('Register Test', () => {
     cy.get("#password").should('be.visible').type('Info@2024#');
     cy.get("#confirm-password").should('be.visible').type('Info@2024#');
     cy.get("button[type='submit']").click();
-    cy.get('.error > small').should('be.visible').contains('validation.custom.email.taken');
+    cy.get('.error > small').should('be.visible').contains('This email is already taken.');
  
     })
 });

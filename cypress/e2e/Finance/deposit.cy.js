@@ -1,12 +1,12 @@
 /// <reference types="cypress" />
 
-describe('Payer', () => {
+describe('Deposit', () => {
     beforeEach(() => {
         cy.login(Cypress.env('VALID_EMAIL'), Cypress.env('VALID_PASSWORD'));
         cy.viewport(1440, 900);
     });
 
-    it('Check the manage Payer functionality', () => {
+    it('Check the manage Deposit functionality', () => {
     cy.contains('span.dash-mtext', 'Finance').click();
     cy.contains('a.dash-link', 'Deposit').should('be.visible').click();
     cy.get('.m-b-10').contains('Manage Deposit').should('be.visible');   

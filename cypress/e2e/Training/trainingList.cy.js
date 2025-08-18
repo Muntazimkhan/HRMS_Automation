@@ -12,9 +12,12 @@ describe('Training List', () => {
 
         //Create a new Training
         cy.get(".btn.btn-sm.btn-primary[href='#']").click();
+        cy.wait(3000);
         cy.get(':nth-child(1) > .form-group > .choices > .choices__inner').click();
         cy.get('.choices__list').should('be.visible').contains('New_C').click();
+        cy.wait(3000);
         cy.get('#training_cost').should('be.visible').clear().type('1000');
+        cy.wait(3000);
         cy.get('#employee').select('Muntazim Khan k36');
         cy.get('#start_date').should('be.visible').clear().type('2025-01-01');
         cy.get('#end_date').should('be.visible').clear().type('2025-07-15');

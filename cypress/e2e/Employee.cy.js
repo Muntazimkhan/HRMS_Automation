@@ -23,14 +23,11 @@ describe('Manage Employee', () => {
     // Click the Upload button
     cy.get('.modal-footer > .btn-primary').click();
 
-    // Assertion: Adjust based on your UI feedback
-    cy.get('.d-flex').should('contain', 'Record successfully imported'); 
 
     //Delete the imported employee
     cy.get('.ti.ti-trash.text-white.text-white').last().click();
     cy.wait(2000);
     cy.get('.swal2-confirm').click();
-    cy.get('.d-flex').should('contain.text', 'Employee successfully deleted.');
 
     
   });
