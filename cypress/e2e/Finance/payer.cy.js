@@ -14,7 +14,7 @@ describe('Payer', () => {
 
     // Create new Payer
     cy.get('.btn.btn-sm.btn-primary').click();
-    cy.get('#payer_name').should('be.visible').type('Test Payer');
+    cy.get('#payer_name').should('be.visible').type('Test Payer',{ force: true });
     cy.get('#contact_number').should('be.visible').type('01230123');
     cy.get('#submitBtn').click();
 

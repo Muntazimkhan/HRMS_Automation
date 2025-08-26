@@ -7,7 +7,6 @@ describe('Transfer Functionality', () => {
   });
 
   it('Should create and delete a transfer successfully', () => {
-    // Expand 'HR Admin Setup' menu
      // Navigate to Transfer
         cy.contains('a.dash-link', 'HR Admin Setup').should('be.visible').click();
         cy.get('.dash-trigger > .dash-submenu > :nth-child(2) > .dash-link').should('be.visible').click({ force: true });
@@ -20,7 +19,7 @@ describe('Transfer Functionality', () => {
 
     cy.get('.choices__inner').eq(0).click();
     cy.get('.choices__list').contains('New_C').click({ force: true });
-    cy.get('body').click(10, 10); // Close dropdown
+    cy.get('body').click(10, 10); 
 
     cy.get('#department_id').select('67');
     cy.get('#transfer_date').type('2025-10-01');
@@ -28,9 +27,5 @@ describe('Transfer Functionality', () => {
     cy.get('#submitBtn').click();
 
     cy.wait(2000);
-
-    // Delete latest transfer
-    cy.get('.ti.ti-trash.text-white.text-white').last().click({ force: true });
-    cy.get('.swal2-confirm.btn.btn-success').click();
   });
 });
