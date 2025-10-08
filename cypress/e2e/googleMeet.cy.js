@@ -7,45 +7,44 @@ describe('Google Meet', () => {
   });
 
   it('Check the Google Meet functionality', () => {
- // Navigate to Google Meet section
-    cy.contains('span.dash-mtext', 'Google Meet').click();
+    // Navigate to Google Meet section
+    cy.contains('span.dash-mtext', 'Google Meet').scrollIntoView().should('be.visible').click();
     cy.get('.m-b-10').contains('Manage Meeting').should('be.visible');
 
-    // Create new Meeting
+    // Click "Create New Meeting"
     cy.get('[data-title="Create New Meeting"]').should('be.visible').click();
 
-    cy.get('#branch_id').should('exist').select('37');
+    // Select branch
+    cy.get('#branch_id').should('exist').select('New_C');
 
-    cy.wait(2000);
+    // Select department
+    cy.get("input[placeholder='Select Department']").should('be.visible').type('Department{enter}', { force: true });
 
-    cy.get('.department_div > .choices > .choices__inner').click({ force: true });
-    cy.get('.choices__list').contains('Project').should('be.visible').click({ force: true });
-    cy.wait(2000);
+    // Select employee
+    cy.get("input[placeholder='Select Employee']").should('be.visible').type('Muntazim{enter}', { force: true });
 
-    cy.get("div[class='employee_div'] div[class='choices__inner']").click({ force: true });
-    cy.get('.choices__list').contains('Muntazim Khan k36').should('be.visible').click({ force: true });
+    // Add attendee email
+    cy.get("div[data-type='text'] input[aria-label='null']").should('be.visible')
+      .type('arshad@gmail.com{enter}');
 
-    cy.get("div[data-type='text'] input[aria-label='null']").should('be.visible').type('muntazimk36@gmail.com{enter}', { force: true });
-
+    // Fill meeting details
     cy.get('#title').should('be.visible').type('Test Meeting');
     cy.get('#currentDate').should('be.visible').clear().type('2025-07-22');
     cy.get('#start_time').should('be.visible').clear().type('10:00');
     cy.get('#end_time').should('be.visible').clear().type('22:00');
     cy.get('#note').should('be.visible').type('Test Note');
 
+    // Submit form
     cy.get('[type="submit"]').should('be.visible').click();
 
-    // Wait for meeting list to refresh
-    cy.wait(2000);
+    // Wait for meeting list to update
+    cy.get('.ti.ti-trash.text-white').should('exist');
+
+    // Delete the created meeting
+    cy.get('.ti.ti-trash.text-white').last().should('be.visible').click();
 
     // Confirm deletion
-    cy.get('.ti.ti-trash.text-white.text-white')
-      .last()
-      .should('be.visible')
-      .click({ force: true });
+    cy.get('.swal2-confirm.btn.btn-success').should('be.visible').click();
 
-    cy.get('.swal2-confirm.btn.btn-success')
-      .should('be.visible')
-      .click();
   });
 });

@@ -20,7 +20,7 @@ describe('Assets', () => {
         cy.get('.choices__list').should('be.visible').contains('SuvastuTech_Assets').click({ force: true });
 
         cy.get('#amount').clear().type('100');
-        cy.get('#support_until').clear().type('2025-10-01');
+        cy.get('#support_until').clear().type('2026-10-01');
         cy.get('#attachment').attachFile('Image.jpg')
         cy.get('#description').should('be.visible').type('Test Description');
         cy.get('#submitBtn').click({ force: true });

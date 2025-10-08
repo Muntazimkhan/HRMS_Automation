@@ -17,52 +17,20 @@ describe('Leave', () => {
     cy.wait(2000);
 
     // Filters
-    cy.get('#month').clear().type('2025-06');
-
-    cy.get('#branch').then(($select) => {
-      const options = [...$select[0].options].map(o => o.value);
-      cy.log('Branch options:', options);
-      if (options.includes('37')) {
-        cy.wrap($select).select('37');
-      } else {
-        cy.log('🚫 Branch option 37 not found');
-      }
-    });
-
-    cy.get('.form-control.select.project_id').then(($select) => {
-      const options = [...$select[0].options].map(o => o.value);
-      cy.log('Project options:', options);
-      if (options.includes('67')) {
-        cy.wrap($select).select('67');
-      } else {
-        cy.log('🚫 Project option 67 not found');
-      }
-    });
-
-    cy.get('#department_id').then(($select) => {
-      const options = [...$select[0].options].map(o => o.value);
-      cy.log('Department options:', options);
-      if (options.includes('69')) {
-        cy.wrap($select).select('69');
-      } else {
-        cy.log('🚫 Department option 69 not found');
-      }
-    });
-
-    cy.get('#leave_type').then(($select) => {
-      const texts = [...$select[0].options].map(o => o.textContent);
-      cy.log('Leave Type options:', texts);
-      if (texts.includes('Full Day Leave')) {
-        cy.wrap($select).select('Full Day Leave');
-      } else {
-        cy.log('🚫 Leave type "Full Day Leave" not found');
-      }
-    });
+    cy.get('#month').clear().type('2025-07');
+    //Select branch
+    cy.get('[name="branch"]').should('be.visible').select('New_C');
+    //Select project
+    cy.get("#project_id").should('be.visible').select('Project');
+    //Select department
+    cy.get('#department_id').should('be.visible').select('Department');
+    //Leave Type
+    cy.get('[name="leave_type"]').should('be.visible').select('Full Day Leave', { force: true });
 
     cy.xpath("//a[@class='btn btn-primary']").click();
 
     // Assertion
-    cy.contains('Duration').parent().should('contain.text', 'Jun-2025');
+    cy.contains('Duration').parent().should('contain.text', 'Jul-2025');
 
     // Clear Filter
     cy.get('.btn.btn-danger').eq(0).click();

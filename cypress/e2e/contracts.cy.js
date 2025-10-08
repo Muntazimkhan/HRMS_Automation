@@ -1,50 +1,45 @@
 /// <reference types="cypress" />
 
 describe('Contracts', () => {
-    beforeEach(() => {
-        cy.login(Cypress.env('VALID_EMAIL'), Cypress.env('VALID_PASSWORD'));
-        cy.viewport(1440, 900);
-    })
+  beforeEach(() => {
+    cy.login(Cypress.env('VALID_EMAIL'), Cypress.env('VALID_PASSWORD'));
+    cy.viewport(1440, 900);
+  });
 
-    it('Check the Contracts functionality', () => {
-        cy.contains('span.dash-mtext', 'Contracts').click();
-        cy.get('.m-b-10').contains('Contract').should('be.visible');
+  it('Check the Contracts functionality', () => {
+    cy.contains('span.dash-mtext', 'Contracts').click();
+    cy.get('.m-b-10').contains('Contract').should('be.visible');
 
-        //Create a new contract
-        cy.get('.ti.ti-plus').click();
-        cy.get('#subject').should('be.visible').type('Test Subject');
-        cy.get('#value').should('be.visible').type('451');
-        cy.get('.choices__inner').eq(1).click();
-        cy.get('.choices__list').should('be.visible').contains('SuvastuTech_Contract').click({ force: true });
-        cy.get('#start_date').should('be.visible').clear().type('2025-03-01');
-        cy.get('#end_date').should('be.visible').clear().type('2025-09-01');
-        cy.get('#description').should('be.visible').type('Test Description');
-        cy.get('#submitBtn').click();
-        cy.get('.d-flex').contains('Contract successfully created!');
+    // Create a new contract
+    cy.get('.ti.ti-plus').click();
+    cy.get('#subject').should('be.visible').type('Test Subject');
+    cy.get('#value').should('be.visible').type('451');
+    cy.get('.choices__inner').eq(1).click();
+    cy.get('.choices__list').should('be.visible').contains('SuvastuTech_Contract').click({ force: true });
+    cy.get('#start_date').should('be.visible').clear().type('2025-03-01');
+    cy.get('#end_date').should('be.visible').clear().type('2025-09-01');
+    cy.get('#description').should('be.visible').type('Test Description');
+    cy.get('#submitBtn').click();
+    cy.get('.d-flex').contains('Contract successfully created!').should('be.visible');
 
-        //Delete Contract
-        cy.get('.ti.ti-trash').last().click();
-        cy.wait(2000);
-        cy.get('.swal2-confirm.btn.btn-success').click();
+    // Delete Contract
+    cy.get('.ti.ti-trash').last().click();
+    cy.get('.swal2-confirm.btn.btn-success').click();
 
-        //View Contract
-        cy.get('.ti.ti-eye.text-white').first().click();
-        cy.wait(2000);
-        cy.get('h4').contains('Test Subject').should('be.visible');
-        
-        //Send Email
-        cy.get('[data-bs-original-title="Send Email"]').click();
+    // View Contract
+    cy.get('.ti.ti-eye.text-white').first().click();
+    cy.get('h4').contains('Test Subject').should('be.visible');
 
-        //Duplicate
-        cy.get('[data-title="Duplicate"]').click();
-        cy.get('.col-md-12 > #notes').should('be.visible').type('Test Notes');
-        cy.get('.modal-body > .modal-footer > .btn-primary').click();
-        cy.wait(2000);
-        cy.get('.ti.ti-trash').last().click();
-        cy.wait(2000);
-        cy.get('.swal2-confirm.btn.btn-success').click();
+    // Send Email
+    cy.get('[data-bs-original-title="Send Email"]').click();
 
+    // Duplicate
+    cy.get('[data-title="Duplicate"]').click();
+    cy.get('.col-md-12 > #notes').should('be.visible').type('Test Notes');
+    cy.get('.modal-body > .modal-footer > .btn-primary').click();
 
-
-    })
-})
+    // Delete duplicated contract
+    cy.get('.ti.ti-trash').last().click();
+    cy.get('.swal2-confirm.btn.btn-success').click();
+  });
+});

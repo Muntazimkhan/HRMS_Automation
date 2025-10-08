@@ -22,6 +22,5 @@ describe('Payer', () => {
     cy.get('.ti.ti-trash.text-white.text-white').first().click({ force: true });
     cy.get('.swal2-confirm.btn.btn-success').should('be.visible').click();
 
-
   });
 });

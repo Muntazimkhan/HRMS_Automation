@@ -6,6 +6,9 @@ module.exports = defineConfig({
   screenshotOnRunFailure: true,
   video: true,
 
+  viewportWidth: 1280,
+  viewportHeight: 720, 
+
   e2e: {
     retries: {
       runMode: 2,

@@ -1,47 +1,66 @@
 /// <reference types="cypress" />
 
 describe('Deposit', () => {
-    beforeEach(() => {
-        cy.login(Cypress.env('VALID_EMAIL'), Cypress.env('VALID_PASSWORD'));
-        cy.viewport(1440, 900);
-    });
+  beforeEach(() => {
+    cy.login(Cypress.env('VALID_EMAIL'), Cypress.env('VALID_PASSWORD'));
+    cy.viewport(1440, 900);
+  });
 
-    it('Check the manage Deposit functionality', () => {
+  it('Check the manage Deposit functionality', () => {
     cy.contains('span.dash-mtext', 'Finance').click();
     cy.contains('a.dash-link', 'Deposit').should('be.visible').click();
-    cy.get('.m-b-10').contains('Manage Deposit').should('be.visible');   
+    cy.get('.m-b-10').contains('Manage Deposit').should('be.visible');
 
-    //Create New Deposit
-    cy.get('.float-end > [href="#"]').click()
+    // Create New Deposit
+    cy.get('.float-end > [href="#"]').click();
 
-    // Open the dropdown
-    cy.get(':nth-child(1) > .form-group > .choices > .choices__inner').click()
-    cy.get('.choices__list--dropdown').should('be.visible').contains('.choices__item', 'Test Account').click()
+    // Select Account
+    cy.get("div.col-md-12 .choices__inner").should('be.visible').click({ force: true });
+    cy.get('.choices__list--dropdown').should('be.visible');
+    cy.get('.choices__list--dropdown .choices__item')
+      .should('have.length.greaterThan', 0)
+      .filter(':visible')
+      .contains('Test Account')
+      .click({ force: true });
 
     cy.get('#amount').should('be.visible').clear().type('1000');
-    cy.get('#date').should('be.visible').type('2025-10-01');  
+    cy.get('#date').should('be.visible').clear().type('2025-10-01');
 
-    cy.get(':nth-child(4) > .form-group > .choices > .choices__inner').click()
-    cy.get('.choices__list--dropdown').should('be.visible').contains('.choices__item', 'SuvastuTech_Income').click()
+    // Select Income Category
+    cy.get(':nth-child(4) > .form-group > .choices > .choices__inner').should('be.visible').click({ force: true });
+    cy.get('.choices__list--dropdown').should('be.visible');
+    cy.get('.choices__list--dropdown .choices__item')
+      .should('have.length.greaterThan', 0)
+      .filter(':visible')
+      .contains('SuvastuTech_Income')
+      .click({ force: true });
 
-    cy.get(':nth-child(5) > .form-group > .choices > .choices__inner').click()
-    cy.get('.choices__list--dropdown').should('be.visible').contains('.choices__item', 'Test Payer').click()
+    // Select Payer
+    cy.get(':nth-child(5) > .form-group > .choices > .choices__inner').should('be.visible').click({ force: true });
+    cy.get('.choices__list--dropdown').should('be.visible');
+    cy.get('.choices__list--dropdown .choices__item')
+      .should('have.length.greaterThan', 0)
+      .filter(':visible')
+      .contains('Test Payer')
+      .click({ force: true });
 
-    cy.get(':nth-child(6) > .form-group > .choices > .choices__inner').click()
-    cy.get('.choices__list--dropdown').should('be.visible').contains('.choices__item', 'SuvastuTech_Payment').click()
+    // Select Payment Method
+    cy.get(':nth-child(6) > .form-group > .choices > .choices__inner').should('be.visible').click({ force: true });
+    cy.get('.choices__list--dropdown').should('be.visible');
+    cy.get('.choices__list--dropdown .choices__item')
+      .should('have.length.greaterThan', 0)
+      .filter(':visible')
+      .contains('SuvastuTech_Payment')
+      .click({ force: true });
 
-    cy.get('#referal_id').should('be.visible').type('123');
-    cy.get('#description').should('be.visible').type('Test Description');   
+    cy.get('#referal_id').should('be.visible').clear().type('123');
+    cy.get('#description').should('be.visible').clear().type('Test Description');
 
-    cy.get('#submitBtn').click();
+    cy.get('#submitBtn').should('be.visible').click();
 
-
-    //Delete Deposit
-    cy.get('.ti.ti-trash.text-white.text-white').last().click();
+    // Delete Deposit
+    cy.get('.ti.ti-trash.text-white').last().should('be.visible').click();
     cy.wait(2000);
-    cy.get('.swal2-confirm.btn.btn-success').click();
-
-
-
-})
-})
+    cy.get('.swal2-confirm.btn.btn-success').should('be.visible').click();
+  });
+});

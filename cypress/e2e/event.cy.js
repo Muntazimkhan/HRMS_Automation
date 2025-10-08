@@ -17,6 +17,7 @@ describe('Event Management Test', () => {
     // Select Branch
     cy.get('#branch_id').select('38');
 
+    cy.wait(2000);
     // Select Department
     cy.get('.choices__inner').first().click({ force: true });
     cy.get('.choices__list').should('be.visible')
@@ -36,9 +37,9 @@ describe('Event Management Test', () => {
     cy.get('#title').should('be.visible').type('Test Event');
     cy.get('#start_date').clear().type('2025-07-01');
     cy.get('#end_date').clear().type('2025-09-01');
-    cy.get('#start_time').clear().type('10:00');   // 10:00 AM
+    cy.get('#start_time').clear().type('10:00');   
     cy.wait(1000); // Keep short and useful wait
-    cy.get('#end_time').clear().type('22:00');     // 10:00 PM
+    cy.get('#end_time').clear().type('22:00');     
 
     // Save Initial Form
     cy.get('.btn.bg-success.p-3').click();

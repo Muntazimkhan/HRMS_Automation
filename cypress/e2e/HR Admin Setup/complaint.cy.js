@@ -13,7 +13,7 @@ describe('Complaint', () => {
         //Create
         cy.get('[data-title="Create New Complaint"]').click();
         cy.get('#title').should('be.visible').type('Test Promotion');
-        cy.get('#complaint_date').clear().should('be.visible').type('2025-01-01');
+        cy.get('#complaint_date').clear().should('be.visible').type('2025-011-01');
         cy.get('#description').should('be.visible').type('Test Description');
         cy.get('#submitBtn').click();
         cy.wait(2000);

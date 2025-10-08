@@ -1,39 +1,42 @@
-/// <reference types="cypress" />
-
 describe('Training List', () => {
-    beforeEach(() => {
-        cy.login(Cypress.env('VALID_EMAIL'), Cypress.env('VALID_PASSWORD'));
-    });
+  beforeEach(() => {
+    cy.login(Cypress.env('VALID_EMAIL'), Cypress.env('VALID_PASSWORD'));
+  });
 
-    it('Check the Training List functionality', () => {
-        cy.contains('a.dash-link', 'Training').should('be.visible').click();
-        cy.contains('a.dash-link', 'Training List').should('be.visible').click();
-        cy.get('.m-b-10').contains('Manage Training').should('be.visible');
+  it('Check the Training List functionality', () => {
+    // Navigate to Training List
+    cy.contains('a.dash-link', 'Training').should('be.visible').click();
+    cy.contains('a.dash-link', 'Training List').should('be.visible').click();
+    cy.contains('.m-b-10', 'Manage Training').should('be.visible');
 
-        //Create a new Training
-        cy.get(".btn.btn-sm.btn-primary[href='#']").click();
-        cy.wait(3000);
-        cy.get(':nth-child(1) > .form-group > .choices > .choices__inner').click();
-        cy.get('.choices__list').should('be.visible').contains('New_C').click();
-        cy.wait(3000);
-        cy.get('#training_cost').should('be.visible').clear().type('1000');
-        cy.wait(3000);
-        cy.get('#employee').select('Muntazim Khan k36');
-        cy.get('#start_date').should('be.visible').clear().type('2025-01-01');
-        cy.get('#end_date').should('be.visible').clear().type('2025-07-15');
-        cy.get('#description').should('be.visible').type('Test Description');
-        cy.get('#submitBtn').click();
+    // Create a new Training
+    cy.get("[data-title='Create New Training']").click();
 
-        //Delete
-        cy.get('.ti.ti-trash.text-white.text-white').last().click();
-        cy.wait(2000);
-        cy.get('.swal2-confirm.btn.btn-success').click();
-        cy.wait(2000);
+    // Open the correct dropdown
+    cy.get('.choices__inner').eq(0).should('be.visible').wait(1000).click({ force: true });
 
-        //Export
-        cy.get('.ti.ti-file-export').click();
+    // Select the value from the visible list
+    cy.get('.choices__list').filter(':visible').contains('New_C').scrollIntoView().should('be.visible').click();
 
+    // Click elsewhere to close dropdown
+    cy.get('body').click(10, 10);
 
+    // Enter training details
+    cy.get('#training_cost').clear().type('1000');
+    cy.wait(1000);
+    cy.get('#employee').select('Muntazim Khan k36');
+    cy.get('#start_date').clear().type('2025-01-01');
+    cy.get('#end_date').clear().type('2025-12-15');
+    cy.get('#description').type('Test Description');
 
-    })
-})
+    // Submit form
+    cy.get('#submitBtn').click();
+
+    // Delete the training
+    cy.get('.ti.ti-trash.text-white').last().click();
+    cy.get('.swal2-confirm.btn.btn-success').click();
+
+    // Export
+    cy.get('.ti.ti-file-export').click();
+  });
+});

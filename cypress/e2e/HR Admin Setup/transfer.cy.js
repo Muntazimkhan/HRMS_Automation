@@ -7,25 +7,48 @@ describe('Transfer Functionality', () => {
   });
 
   it('Should create and delete a transfer successfully', () => {
-     // Navigate to Transfer
-        cy.contains('a.dash-link', 'HR Admin Setup').should('be.visible').click();
-        cy.get('.dash-trigger > .dash-submenu > :nth-child(2) > .dash-link').should('be.visible').click({ force: true });
+    // Navigate to HR Admin Setup
+    cy.get('#hr_admin').should('be.visible').click();
+    
+    // Click on "Manage Transfer"
+    cy.xpath("//a[normalize-space()='Transfer']").should('be.visible').click();
 
-    // Confirm navigation
+    // Confirm we are on the "Manage Transfer" page
     cy.contains('.m-b-10', 'Manage Transfer').should('be.visible');
+    
+    // Create a new Transfer
+    cy.get('[data-title="Create New Transfer"]').should('be.visible').click();
 
-    // Create New Transfer
-    cy.get('[data-title="Create New Transfer"]').click();
-
+    // Select a Transfer Type
     cy.get('.choices__inner').eq(0).click();
-    cy.get('.choices__list').contains('New_C').click({ force: true });
+    cy.get('.choices__list').contains('SuvastuTech_C').click(); 
     cy.get('body').click(10, 10); 
 
-    cy.get('#department_id').select('67');
-    cy.get('#transfer_date').type('2025-10-01');
-    cy.get('#description').type('Test Description');
-    cy.get('#submitBtn').click();
+    // Select a department
+    cy.get('#department_id').should('be.visible').select('SuvastuTech');
 
-    cy.wait(2000);
+     // Ensure employee dropdown is ready
+    cy.get('.employee_div > .choices > .choices__inner').should('be.visible').click();
+    cy.wait(1000);
+    cy.get('.choices__list').contains('Arshad').click({force: true}); 
+
+
+    // Set transfer date and description
+    cy.get('#transfer_date').should('be.visible').clear().type('2026-10-07', { force: true }).blur(); ;
+
+    cy.get('#description').should('be.visible').type('Test Description');
+
+    // Submit transfer
+    cy.get('#submitBtn').should('be.visible').click();
+
+
+    // Delete the transfer
+    cy.get('.ti.ti-trash.text-white').first().click();
+
+    // Wait for the Alert confirmation popup
+    cy.get('.swal2-confirm.btn.btn-success').should('be.visible').click();
+
+    // Ensure deletion confirmation
+    cy.get('.d-flex').should('be.visible');
   });
 });

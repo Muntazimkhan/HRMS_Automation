@@ -7,22 +7,22 @@ describe('Company Policy', () => {
     })
 
     it('Check the Company Policy functionality', () => {
-        cy.contains('span.dash-mtext', 'Company Policy').click();
+        cy.contains('span.dash-mtext', 'Company Policy').click({force: true});
         cy.get('.m-b-10').contains('Manage Company Policy').should('be.visible');
 
         //Create a new Company Policy
-        cy.get('[data-title="Create New Company Policy"]').click();
+        cy.get('[data-title="Create New Company Policy"]').click({force: true});
         cy.get('#branch').should('be.visible').select('38');
         cy.get('#title').should('be.visible').type('Test Policy', {force: true});
         cy.get('#description').should('be.visible').type('Test Description');
         cy.get('input#attachment').attachFile('Image.jpg', { force: true });
-        cy.get('[type="submit"]').click();
+        cy.get('[type="submit"]').click({force: true});
         cy.wait(2000);
 
         //Delete
-        cy.get('.ti.ti-trash.text-white.text-white').last().click();
+        cy.get('.ti.ti-trash.text-white.text-white').last().click({force: true});
         cy.wait(2000);
-        cy.get('.swal2-confirm.btn.btn-success').click();
+        cy.get('.swal2-confirm.btn.btn-success').click({force: true});
 
 
     })

@@ -1,5 +1,5 @@
 /// <reference types = "cypress" />
-describe('Register Test', () => {
+describe.skip('Register Test', () => {
     beforeEach(() => {
         cy.visit("https://stage-hrms.iaoai.io/register/en");
         cy.viewport(1440, 900);

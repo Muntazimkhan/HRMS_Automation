@@ -19,7 +19,7 @@ describe('Tickets', () => {
         cy.get('.choices__inner').eq(1).click();
         cy.get('.choices__list').should('be.visible').contains('High').click();
         
-        cy.get('#end_date').should('be.visible').clear().type('2025-09-01');
+        cy.get('#end_date').should('be.visible').clear().type('2026-09-01');
         cy.get('[id="description"]').type('Test Description' , { force: true });
 
         cy.get('.choices__inner').eq(2).click();

@@ -15,15 +15,16 @@ describe('Bulk Attendance', () => {
     //Filter
 
     cy.get('#date').clear().type('2025-06-10')
-    cy.get('#branch_id').select('37');
-    cy.get('#department_id').select('67');
-    cy.get('.col-auto > .btn-primary').click();
+    cy.get('#branch_id').should('be.visible').select('37');
+    cy.wait(2000);
+    cy.get('#department_id').should('be.visible').select('Department');
+    cy.get('.btn.btn-sm.btn-primary').should('be.visible').click();
 
     //Select All
-    cy.get('#present_all').check()
+    cy.get('#present_all').should('be.visible').check()
 
     //Update
-    cy.get('.attendance-btn > .btn').click();
+    cy.get('.attendance-btn > .btn').should('be.visible').click();
 
     //Assertions
     cy.get('.d-flex').contains('Employee attendance successfully created.');

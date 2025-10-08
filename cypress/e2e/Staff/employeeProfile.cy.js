@@ -13,7 +13,7 @@ describe('Employee Report', () => {
         //Filters functionality
         cy.get('.ti.ti-filter').click();
         cy.get('#branch_id').select('37')
-        cy.get(':nth-child(1) > .btn-box > #department_id').select('67');
+        cy.xpath("//select[@id='department_id']").select('85');
         cy.get('#designation_id').select('184');
         cy.get('.ti.ti-search').click();
 
