@@ -14,9 +14,9 @@ describe('Payroll Report', () => {
 
         // Filters functionality
         cy.get('#month').type('2025-06');
-        cy.get('#branch').select('New_C');
-        cy.get('#project_id').select('Project');
-        cy.get('#department_id').select('New Depart');
+        cy.get('#branch').select('Attache');
+        cy.get('#project_id').select('Attache');
+        cy.get('#department_id').select('CPU');
         cy.get('.btn.btn-sm.btn-primary').eq(2).click();
 
         // Assertion

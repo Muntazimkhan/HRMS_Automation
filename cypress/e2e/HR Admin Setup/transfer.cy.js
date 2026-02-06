@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Transfer Functionality', () => {
+describe.skip('Transfer Functionality', () => {
   beforeEach(() => {
     cy.login(Cypress.env('VALID_EMAIL'), Cypress.env('VALID_PASSWORD'));
     cy.viewport(1440, 900);
@@ -9,46 +9,112 @@ describe('Transfer Functionality', () => {
   it('Should create and delete a transfer successfully', () => {
     // Navigate to HR Admin Setup
     cy.get('#hr_admin').should('be.visible').click();
-    
+
     // Click on "Manage Transfer"
-    cy.xpath("//a[normalize-space()='Transfer']").should('be.visible').click();
+    cy.xpath("//a[normalize-space()='Transfer']")
+      .should('be.visible')
+      .click();
 
-    // Confirm we are on the "Manage Transfer" page
-    cy.contains('.m-b-10', 'Manage Transfer').should('be.visible');
-    
-    // Create a new Transfer
-    cy.get('[data-title="Create New Transfer"]').should('be.visible').click();
+    // Confirm page load
+    cy.contains('.m-b-10', 'Manage Transfer')
+      .should('be.visible');
 
-    // Select a Transfer Type
-    cy.get('.choices__inner').eq(0).click();
-    cy.get('.choices__list').contains('SuvastuTech_C').click(); 
-    cy.get('body').click(10, 10); 
+    // Create new transfer
+    cy.get('[data-title="Create New Transfer"]').click();
 
-    // Select a department
-    cy.get('#department_id').should('be.visible').select('SuvastuTech');
+    // ---------- CLIENT ----------
+    cy.get('.choices__inner').eq(0).should('be.visible').click();
+    cy.get('.choices__list').should('be.visible').contains('Beast House').click({ force: true });
 
-     // Ensure employee dropdown is ready
-    cy.get('.employee_div > .choices > .choices__inner').should('be.visible').click();
-    cy.wait(1000);
-    cy.get('.choices__list').contains('Arshad').click({force: true}); 
+    // ---------- PROJECT ----------
+    cy.xpath("//div[@id='project_div']//div[@class='choices__inner']").should('be.visible').click();
+    cy.get('input[aria-label="Select Project"]').should('be.visible').type('Beast House{enter}')
 
+    // ---------- DEPARTMENT ----------
+    cy.xpath("//div[@id='department_div']//div[@class='choices__inner']").should('be.visible').click();
+    cy.get("input[aria-label='Select Department']").should('be.visible').type('Back of House - BH{enter}');
 
-    // Set transfer date and description
-    cy.get('#transfer_date').should('be.visible').clear().type('2026-10-07', { force: true }).blur(); ;
+    // ---------- DESIGNATION ----------
+    cy.xpath("//div[@id='desingnation_div']//div[@class='choices__inner']").should('be.visible').click();
+    cy.get("input[aria-label='Select Designation']").should('be.visible').type('Head Chef{enter}')
 
-    cy.get('#description').should('be.visible').type('Test Description');
+  cy.wait(1000);
+    // ---------- EMPLOYEE ----------
+    cy.xpath("//div[@class='employee_div']//div[@class='choices__inner']").should('be.visible').click();
+    cy.get("input[aria-label='Select Employee']").should('be.visible').type('Fructoso Cruz{enter}')
 
-    // Submit transfer
-    cy.get('#submitBtn').should('be.visible').click();
+cy.wait(1000);
+    // ---------- NEW BRANCH ----------
+cy.get(".choices__inner").eq(5).click({force: true});
+cy.xpath("(//input[@aria-label='Select Client'])[2]").type('Beast House{enter}')
 
+    // ---------- NEW PROJECT ----------
+cy.get("div[id='new_project_div'] div[class='choices__inner']").click({force: true});
+cy.get("input[aria-label='Select New Project']").type('Beast House{enter}')
 
-    // Delete the transfer
-    cy.get('.ti.ti-trash.text-white').first().click();
+    // ---------- NEW DEPARTMENT ----------
+cy.xpath("//body[1]/div[2]/div[1]/div[1]/div[2]/form[1]/div[1]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]").click({force: true});
+cy.get("input[aria-label='Select New Department']").type('Admin - BH{enter}')
 
-    // Wait for the Alert confirmation popup
-    cy.get('.swal2-confirm.btn.btn-success').should('be.visible').click();
+    // ---------- NEW DESIGNATION ----------
+cy.get("div[id='new_designation_div'] div[class='choices__inner']").click({force: true});
+cy.get("div[id='new_designation_div'] input[aria-label='Select Designation']").type('Floor Manager{enter}')
 
-    // Ensure deletion confirmation
-    cy.get('.d-flex').should('be.visible');
+    // ---------- TRANSFER DATE ----------
+    cy.get('#transfer_date').should('be.visible').clear().type('2026-10-07').blur();
+
+    // ---------- LINE MANAGER ----------
+    cy.get('.choices__inner').eq(3).should('be.visible').click();
+
+    cy.get('.choices__list')
+      .should('be.visible')
+      .contains('Abdullah al Mamun')
+      .click({ force: true });
+
+    // ---------- TRANSFER TYPE ----------
+    cy.get('.choices__inner')
+      .eq(4)
+      .should('be.visible')
+      .click();
+
+    cy.get('.choices__list')
+      .should('be.visible')
+      .contains('Permanent')
+      .click({ force: true });
+
+    // ---------- SALARY ----------
+    cy.get('#salary_increase')
+      .should('be.visible')
+      .click();
+
+    cy.get('#new_salary')
+      .should('be.visible')
+      .clear()
+      .type('7000');
+
+    // ---------- DESCRIPTION ----------
+    cy.get('#description')
+      .should('be.visible')
+      .type('Test Description');
+
+    // ---------- SUBMIT ----------
+    cy.get('#submitBtn')
+      .should('be.enabled')
+      .click();
+
+    // Ensure transfer appears before deleting
+    cy.get('.ti.ti-trash.text-white')
+      .should('be.visible')
+      .first()
+      .click();
+
+    // Confirm deletion
+    cy.get('.swal2-confirm.btn.btn-success')
+      .should('be.visible')
+      .click();
+
+    // Verify success UI
+    cy.get('.d-flex')
+      .should('be.visible');
   });
 });

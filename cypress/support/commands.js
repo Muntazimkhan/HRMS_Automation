@@ -1,35 +1,49 @@
 // cypress/support/commands.js
 
-// Prevent Cypress from failing tests on uncaught exceptions from the app
-Cypress.on('uncaught:exception', (err, runnable) => {
+// Prevent Cypress from failing tests on uncaught exceptions
+Cypress.on('uncaught:exception', () => {
   return false;
 });
 
 // Custom login command
 Cypress.Commands.add('login', (email, password) => {
-  cy.visit('https://iaoai.io/hrmsv2/demo/login');
+  cy.visit('https://stage-hrms.iaoai.io/login');
   cy.get('#email').should('be.visible').type(email);
   cy.get('#password').should('be.visible').type(password);
   cy.get('button[type="submit"]').click();
 });
 
-// ✅ New: Custom dropdown selector for Choices.js
-Cypress.Commands.add('selectChoicesItem', (containerSelector, itemText) => {
-  cy.get(`${containerSelector} .choices__inner`).click();
+/**
+ * @param 
+ * @param 
+ */
+Cypress.Commands.add("selectChoice", (labelText, optionText) => {
 
-  cy.get(containerSelector)
-    .find('.choices__list--dropdown')
-    .should('be.visible')
-    .should('not.be.empty') // Ensure it's loaded
+  // Find the label
+  cy.contains("label", labelText)
+    .should("be.visible")
+    .then(($label) => {
 
-    // NEW: Retry until item appears
-    .contains('.choices__item', itemText, { timeout: 10000 })
-    .should('exist')
-    .click({ force: true });
+      // Find the FIRST .choices element that comes AFTER the label
+      cy.wrap($label)
+        .parent()              
+        .nextAll()             
+        .find(".choices__inner")
+        .first()
+        .should("be.visible")
+        .click({ force: true });
+
+      // Select option from active list
+      cy.wrap($label)
+        .parent()
+        .nextAll()
+        .find(".choices__list--dropdown.is-active .choices__item")
+        .contains(new RegExp(`^${optionText}$`, 'i'))
+        .click({ force: true });
+    });
 });
 
-
-// ✅ Use CommonJS syntax consistently
+// CommonJS imports
 require('cypress-xpath');
 require('cypress-downloadfile/lib/downloadFileCommand');
 require('cypress-file-upload');

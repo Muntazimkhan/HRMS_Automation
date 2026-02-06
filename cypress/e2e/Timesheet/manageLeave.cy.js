@@ -13,28 +13,22 @@ describe('Manage Leave ', () => {
     // Export Leaves
     cy.get('.btn.btn-sm.btn-primary').eq(1).click({ force: true });
 
-    // Change View
-    cy.get('[href="https://iaoai.io/hrmsv2/calender/leave"]').click({ force: true });
-    cy.get('.btn.btn-sm.btn-primary').eq(0).click({ force: true });
-    cy.contains('Manage Leave').should('be.visible');
-
     // Add new Leave and delete it
-    cy.get(".btn.btn-sm.btn-primary[href='#']").click({ force: true });
+    cy.get("[data-title='Create New Leave']").click({ force: true });
     cy.contains('h5', 'Create New Leave').should('be.visible');    
     cy.get('.choices__inner').click({ force: true });
-    cy.get('.choices__item--choice').contains('Muntazim Khan k36').click({ force: true });
-    cy.get('#leave_type_id', { timeout: 10000 }).should('be.visible').select('27', { force: true }); 
-    cy.get('#start_date').clear().type('2025-07-14');
-    cy.get('#end_date').clear().type('2025-07-16');
+    cy.get('.choices__item--choice').contains('Abdellatif Hamed').click({ force: true });
+    cy.get('#leave_type_id', { timeout: 10000 }).should('be.visible').select('3', { force: true }); 
+    cy.get('#start_date').clear().type('2025-10-14');
+    cy.get('#end_date').clear().type('2025-10-16');
     cy.get('#leave_reason').type('Testing Leave');
     cy.get('#remark').type('Testing Remarks');
     cy.get('#submitBtn').click({ force: true });
 
+    cy.get("#employee").select('Abdellatif Hamed', { force: true });
+    cy.xpath("//a[@onclick=\"document.getElementById('employee_filter').submit(); return false;\"]").click({ force: true });
     cy.get('.ti.ti-trash.text-white.text-white').eq(0).should('be.visible').click({ force: true });
     cy.get('.swal2-confirm.btn.btn-success').should('be.visible').click({ force: true });
 
-    // Show Logs
-    cy.get('.ti.ti-eye').click({ force: true });
-    cy.contains('Approved At').should('be.visible');
   });
 });

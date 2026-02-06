@@ -8,16 +8,16 @@ describe('Bulk Attendance', () => {
 
     it('Bulk Attendance functionality', () => {
     cy.get('.dash-link').contains('Timesheet').click();    
-    cy.wait(2000);
+    cy.wait(1000);
     cy.get('.dash-link').contains('Attendance').click();
     cy.get('.dash-link').contains('Bulk Attendance').click();
 
     //Filter
 
-    cy.get('#date').clear().type('2025-06-10')
-    cy.get('#branch_id').should('be.visible').select('37');
-    cy.wait(2000);
-    cy.get('#department_id').should('be.visible').select('Department');
+    cy.get('#date').clear().type('2025-07-10')
+    cy.get('#branch_id').should('be.visible').select('Attache');
+    cy.wait(1000);
+    cy.get('#department_id').should('be.visible').select('CPU');
     cy.get('.btn.btn-sm.btn-primary').should('be.visible').click();
 
     //Select All

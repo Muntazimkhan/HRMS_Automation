@@ -12,15 +12,17 @@ describe('Complaint', () => {
 
         //Create
         cy.get('[data-title="Create New Complaint"]').click();
-        cy.get('#title').should('be.visible').type('Test Promotion');
-        cy.get('#complaint_date').clear().should('be.visible').type('2025-011-01');
+        cy.get(".choices__inner").eq(1).click();
+        cy.get('.choices__list').contains('Abdellatif Hamed').click({force: true});
+        cy.get('#title').should('be.visible').type('Test Complaint', { force: true });
+        cy.get('#complaint_date').clear().should('be.visible').type('2026-10-10');
         cy.get('#description').should('be.visible').type('Test Description');
         cy.get('#submitBtn').click();
-        cy.wait(2000);
+        cy.wait(1000);
         
         //Delete
         cy.get('.ti.ti-trash.text-white.text-white').last().click();
-        cy.wait(2000);
+        cy.wait(1000);
         cy.get('.swal2-confirm.btn.btn-success').click();
 
     })

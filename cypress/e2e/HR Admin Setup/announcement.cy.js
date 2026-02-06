@@ -17,11 +17,11 @@ describe('Announcement', () => {
         cy.get('#end_date').clear().should('be.visible').type('2025-10-01');
         cy.get('#description').should('be.visible').type('Test Description');
         cy.get('#submitBtn').click();
-        cy.wait(2000);
+        cy.wait(1000);
         
         //Delete
-        cy.get('.ti.ti-trash.text-white.text-white').last().click();
-        cy.wait(2000);
+        cy.get('.ti.ti-trash.text-white.text-white').first().click();
+        cy.wait(1000);
         cy.get('.swal2-confirm.btn.btn-success').click();
     })
 })  

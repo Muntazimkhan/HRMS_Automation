@@ -13,15 +13,15 @@ describe('Resignation', () => {
         //Create a new Resignation
         cy.get('[data-title="Create New Resignation"]').click();
         cy.get('#notice_date').clear().type('2025-07-01')
-        cy.get('#resignation_date').clear().type('2025-10-01')
+        cy.get('#resignation_date').clear().type('2027-10-01')
 
         cy.get('#description').should('be.visible').type('Test Description');
         cy.get("input[value='Create']").click();
-        cy.wait(2000);
+        cy.wait(1000);
         
         //Delete Resignation
         cy.get('.ti.ti-trash.text-white.text-white').first().click();
-        cy.wait(2000);
+        cy.wait(1000);
         cy.get('.swal2-confirm.btn.btn-success').click();
 
     })

@@ -14,7 +14,7 @@ describe('Tickets', () => {
         cy.get('.ti.ti-plus').click()
         cy.get('[id="title"]').should('be.visible').type('Test Ticket');
         cy.get('.choices__inner').eq(0).click();
-        cy.get('.choices__list').should('be.visible').contains('Arshad').click();
+        cy.get('.choices__list').should('be.visible').contains('Lara Qadan').click();
 
         cy.get('.choices__inner').eq(1).click();
         cy.get('.choices__list').should('be.visible').contains('High').click();
@@ -29,7 +29,7 @@ describe('Tickets', () => {
 
         //Delete
         cy.get('.ti.ti-trash.text-white ').last().click();
-        cy.wait(2000);
+        cy.wait(1000);
         cy.get('.swal2-confirm.btn.btn-success').click();
 
     })

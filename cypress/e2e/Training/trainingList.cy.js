@@ -16,7 +16,7 @@ describe('Training List', () => {
     cy.get('.choices__inner').eq(0).should('be.visible').wait(1000).click({ force: true });
 
     // Select the value from the visible list
-    cy.get('.choices__list').filter(':visible').contains('New_C').scrollIntoView().should('be.visible').click();
+    cy.get('.choices__list').filter(':visible').contains('Attache').scrollIntoView().should('be.visible').click();
 
     // Click elsewhere to close dropdown
     cy.get('body').click(10, 10);
@@ -24,7 +24,7 @@ describe('Training List', () => {
     // Enter training details
     cy.get('#training_cost').clear().type('1000');
     cy.wait(1000);
-    cy.get('#employee').select('Muntazim Khan k36');
+    cy.get('#employee').select('Noor Khan');
     cy.get('#start_date').clear().type('2025-01-01');
     cy.get('#end_date').clear().type('2025-12-15');
     cy.get('#description').type('Test Description');

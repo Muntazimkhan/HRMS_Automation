@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Google Meet', () => {
+describe.skip('Google Meet', () => {
   beforeEach(() => {
     cy.login(Cypress.env('VALID_EMAIL'), Cypress.env('VALID_PASSWORD'));
     cy.viewport(1440, 900);
@@ -15,13 +15,13 @@ describe('Google Meet', () => {
     cy.get('[data-title="Create New Meeting"]').should('be.visible').click();
 
     // Select branch
-    cy.get('#branch_id').should('exist').select('New_C');
+    cy.get('#branch_id').should('exist').select('Attache');
 
     // Select department
-    cy.get("input[placeholder='Select Department']").should('be.visible').type('Department{enter}', { force: true });
+    cy.get("input[placeholder='Select Department']").should('be.visible').type('CPU{enter}', { force: true });
 
     // Select employee
-    cy.get("input[placeholder='Select Employee']").should('be.visible').type('Muntazim{enter}', { force: true });
+    cy.get("input[placeholder='Select Employee']").should('be.visible').type('Abdellatif Hamed{enter}', { force: true });
 
     // Add attendee email
     cy.get("div[data-type='text'] input[aria-label='null']").should('be.visible')

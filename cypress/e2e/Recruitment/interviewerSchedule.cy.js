@@ -9,8 +9,8 @@ describe('Interviewer Schedule', () => {
         cy.get('.m-b-10').contains('Manage Interview Schedule').should('be.visible');
 
         //Select Employee
-        cy.get('#employee_dd').should('be.visible').select('565');
-        cy.xpath("//tbody/tr[4]/td[2]").click();
+        cy.get('#employee_dd').should('be.visible').select('17');
+        cy.xpath("//tbody/tr[3]/td[2]").click();
         cy.xpath("//button[normalize-space()='Book Time Slot']").click();
         cy.get('.swal2-confirm').click();
 

@@ -11,15 +11,16 @@ describe('Warning', () => {
 
         //Create
         cy.get('[data-title="Create New Warning"]').click();
-        cy.get('#subject').should('be.visible').type('Test subject');
-        cy.get('#warning_date').clear().should('be.visible').type('2025-01-01');
+        cy.get(".choices__inner").eq(1).click();
+        cy.get('.choices__list').contains('Abdellatif Hamed').click({force: true});
+        cy.get('#subject').should('be.visible').type('Test subject', { force: true });
+        cy.get('#warning_date').clear().should('be.visible').type('2026-10-10');
         cy.get('#description').should('be.visible').type('Test Description');
         cy.get('#submitBtn').click();
-        cy.wait(2000);
         
         //Delete
         cy.get('.ti.ti-trash.text-white.text-white').last().click();
-        cy.wait(2000);
+        cy.wait(1000);
         cy.get('.swal2-confirm.btn.btn-success').click();
 
     })

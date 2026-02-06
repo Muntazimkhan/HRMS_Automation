@@ -15,14 +15,12 @@ describe('Evaluation', () => {
 
     //edit
     cy.get(':nth-child(3) > :nth-child(9) > .action-btn').click();
-        cy.wait(2000);
+    cy.wait(1000);
     cy.get('.btn.btn-sm.btn-primary').click();    
     cy.get('#level_1_66').check();
     cy.get('#level_2_66').check();
     cy.get('#level_3_66').check();
     cy.get('#level_4_66').check();
-
-    //cy.get('.modal-footer > .btn-primary').click();
 
 })
 })

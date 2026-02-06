@@ -11,10 +11,10 @@ describe('Holiday', () => {
 
         // Export 
         cy.get('.ti.ti-file-export').click()
-        cy.wait(2000);
+        cy.wait(1000);
 
         //Import
-        cy.get('[data-title="Import Holiday CSV file"]').click();
+        cy.get('.ti.ti-file-import').click({force: true});
         cy.wait(1000);
 
         cy.get('.choose-file > .form-label').click({ force: true });
@@ -22,7 +22,7 @@ describe('Holiday', () => {
 
         // Upload file from fixtures
         cy.get('input[type="file"]').attachFile('holidays.csv');
-        cy.wait(2000);
+        cy.wait(1000);
         cy.get('.modal-footer > .btn-primary').click();
 
 
@@ -34,7 +34,7 @@ describe('Holiday', () => {
 
         //Delete
         cy.get('.ti.ti-trash.text-white.text-white').last().click();
-        cy.wait(2000);
+        cy.wait(1000);
         cy.get('.swal2-confirm.btn.btn-success').click();
 
         //New Holiday Request

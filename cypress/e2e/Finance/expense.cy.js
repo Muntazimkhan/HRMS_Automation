@@ -23,7 +23,7 @@ describe('Manage Expense', () => {
         // Create new Expense
         cy.get('.ti.ti-plus').click();
 
-        // Select account for expense (waiting for the dropdown)
+        // Select account for expense 
         cy.get('.col-md-12 > .form-group > .choices > .choices__inner')
             .click()
             .get('.choices__list--dropdown').should('be.visible')
@@ -38,21 +38,21 @@ describe('Manage Expense', () => {
         cy.get(':nth-child(4) > .form-group > .choices > .choices__inner')
             .click()
             .get('.choices__list--dropdown').should('be.visible')
-            .contains('.choices__item', 'SuvastuTech_Expense')
+            .contains('.choices__item', 'Petty Cash')
             .click();
 
         // Select user for expense
         cy.get(':nth-child(5) > .form-group > .choices > .choices__inner')
             .click()
             .get('.choices__list--dropdown').should('be.visible')
-            .contains('.choices__item', 'Muntazim Khan k36')
+            .contains('.choices__item', 'Abdellatif Hamed')
             .click();
 
         // Select payment method
         cy.get(':nth-child(6) > .form-group > .choices > .choices__inner')
             .click()
-            .get('.choices__list--dropdown').should('be.visible')
-            .contains('.choices__item', 'SuvastuTech_Payment')
+            cy.get('.choices__list--dropdown').should('be.visible')
+            .contains('.choices__item', 'Bank Transfer')
             .click();
 
         // Fill in the referral ID and description

@@ -10,30 +10,24 @@ describe('Document', () => {
         cy.contains('span.dash-mtext', 'Document').click();
         cy.get('.m-b-10').contains('Manage Document').should('be.visible');
 
-        // //Create a new Folder
-        // cy.get('[data-title="Create New  Document Folder"]').click();
-        // cy.get('#name').should('be.visible').type('Test Folder');
-        // cy.get('[type="submit"]').click();
-
         //Add document
-        cy.contains('span', 'New Folder').should('be.visible').click();
+        cy.contains('span', 'Test Document').should('be.visible').click();
         cy.get('[data-title="Create New  Document Type"]').click();
-        cy.get('#name').should('be.visible').type('Test Document');
-        cy.get('#role').should('be.visible').select('89');
+        cy.get('#name').should('be.visible').type('Test Form');
+        cy.get('#role').should('be.visible').select('hr');
         cy.get('#documents').attachFile('Image.jpg');
         cy.get('#description').should('be.visible').type('Test Description');
         cy.get('[type="submit"]').click();
         cy.get('.d-flex').contains('Document successfully uploaded.');
 
         //Delete
-        cy.get('.ti.ti-trash.text-white.text-white').last().click();
-        cy.wait(2000);
+        cy.get('.ti.ti-trash.text-white.text-white').click();
         cy.get('.swal2-confirm.btn.btn-success').click();
     })
       it('Bulk Upload', () =>{
         cy.contains('span.dash-mtext', 'Document').click();
         cy.get('.m-b-10').contains('Manage Document').should('be.visible');
-        cy.contains('span', 'New Folder').should('be.visible').click();
+        cy.contains('span', 'Test Document').should('be.visible').click();
 
         cy.get('[data-title="Bulk Create New Document Type"]').click();
         cy.get('#documents').attachFile('Image.jpg', 'FKD.jpg');
@@ -41,7 +35,6 @@ describe('Document', () => {
 
         //Delete
         cy.get('.ti.ti-trash.text-white.text-white').last().click();
-        cy.wait(2000);
         cy.get('.swal2-confirm.btn.btn-success').click();
 
     })

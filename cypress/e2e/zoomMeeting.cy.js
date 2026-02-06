@@ -14,7 +14,7 @@ describe('Zoom Meeting', () => {
     cy.get('#title').should('be.visible').type('Test Meeting');
 
     cy.get('.choices__inner').should('be.visible').click();
-    cy.get('.choices__list').should('be.visible').contains('Arshad').click();
+    cy.get('.choices__list').should('be.visible').contains('Abdellatif Hamed').click();
 
     cy.get('#current_date').type('2025-07-22T10:00');
     cy.get('#duration').type('30');

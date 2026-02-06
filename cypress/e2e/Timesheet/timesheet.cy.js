@@ -28,7 +28,7 @@ describe('Timesheet Navigation', () => {
     cy.get('.ti.ti-file-export').should('be.visible').click();
 
     // Import functionality
-    cy.get('[data-url="https://iaoai.io/hrmsv2/import/timesheet/file"]').should('be.visible').click({ force: true });
+    cy.get('[data-title="Import Timesheet CSV file"]').should('be.visible').click({ force: true });
 
     cy.get('input[type="file"]').should('exist').attachFile('timesheet.csv');
 
@@ -45,7 +45,7 @@ describe('Timesheet Navigation', () => {
     // Filter
     cy.get('#current_date').should('be.visible').clear().type('2025-06-29');
     cy.get('#current_date').clear().type('2025-07-10');
-    cy.get('#employee_id').select('Muntazim Khan k36', { force: true });
+    cy.get('#employee_id').select('Rheazel Mae', { force: true });
     cy.get('.col-auto > .btn-primary').should('be.visible').click();
 
     // Wait for potential filter results to load

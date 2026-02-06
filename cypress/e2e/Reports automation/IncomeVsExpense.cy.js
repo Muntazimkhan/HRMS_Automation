@@ -7,9 +7,6 @@ describe('Download Income Vs Expense Report', () => {
     });
 
     it('should click the download button', () => {
-        // Visit the dashboard page
-        cy.visit('https://iaoai.io/hrmsv2/dashboard');
-
         // Navigate to the 'Income Vs Expense' report section
         cy.contains('span.dash-mtext', 'Report').click();
         cy.contains('a', 'Income Vs Expense').click();
@@ -23,9 +20,9 @@ describe('Download Income Vs Expense Report', () => {
         // Set the date filters 
         cy.get('#start_month').clear().type('2025-06');
         cy.get('#end_month').clear().type('2025-08');
-        cy.get('.btn.btn-sm.btn-primary').eq(1).click(); // Apply the filter
+        cy.get('.btn.btn-sm.btn-primary').eq(1).click(); 
 
-        // Assertion to ensure the report reflects the filtered duration
+        // Assertion
         cy.contains('Duration').parent().should('contain.text', 'Jun-2025 to Aug-2025');
     });
 });

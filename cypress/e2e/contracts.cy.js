@@ -12,10 +12,10 @@ describe('Contracts', () => {
 
     // Create a new contract
     cy.get('.ti.ti-plus').click();
-    cy.get('#subject').should('be.visible').type('Test Subject');
+    cy.get('#subject').should('be.visible').type('Test Subject', { force: true });
     cy.get('#value').should('be.visible').type('451');
     cy.get('.choices__inner').eq(1).click();
-    cy.get('.choices__list').should('be.visible').contains('SuvastuTech_Contract').click({ force: true });
+    cy.get('.choices__list').should('be.visible').contains('Permanent').click({ force: true });
     cy.get('#start_date').should('be.visible').clear().type('2025-03-01');
     cy.get('#end_date').should('be.visible').clear().type('2025-09-01');
     cy.get('#description').should('be.visible').type('Test Description');
@@ -26,9 +26,9 @@ describe('Contracts', () => {
     cy.get('.ti.ti-trash').last().click();
     cy.get('.swal2-confirm.btn.btn-success').click();
 
-    // View Contract
-    cy.get('.ti.ti-eye.text-white').first().click();
-    cy.get('h4').contains('Test Subject').should('be.visible');
+    //View Contract Details
+    cy.get('.ti.ti-eye.text-white').last().click();
+    cy.get('.m-b-10').contains('No-Subject').should('be.visible');
 
     // Send Email
     cy.get('[data-bs-original-title="Send Email"]').click();

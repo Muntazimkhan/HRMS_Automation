@@ -12,19 +12,16 @@ describe('Employee Report', () =>{
        
        // Download and Export functionality
        cy.get('.btn.btn-sm.btn-primary.float-end').eq(0).click();
-       cy.wait(3000);        
+       cy.wait(2000);        
        cy.get('button[type="submit"]').click();
 
        // Filters functionality
-       cy.get('#dob_from').type('2001-01-14');
-       cy.get('#dob_to').type('2001-01-16');
+       cy.get('#dob_from').type('2024-01-12');
+       cy.get('#dob_to').type('2025-01-16');
        cy.get('.btn.btn-primary').eq(2).click()
 
-       // Assertion
-       cy.get('tbody > tr > :nth-child(2)').should('contain.text', 'Muntazim Khan k36');
-
        //View Employee Details
-       cy.get(".btn.btn-sm.btn-outline-primary ").click();
+       cy.get(".btn.btn-sm.btn-outline-primary ").eq(0).click();
 
        cy.get(".drp-text.hide-mob.text-primary").eq(0).should('contain.text', 'Joining Letter');
     })

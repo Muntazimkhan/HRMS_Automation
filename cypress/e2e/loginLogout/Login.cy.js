@@ -11,7 +11,7 @@ describe('Login Test', () => {
     console.log(Cypress.env('VALID_PASSWORD'));  
 
     // Visit the login page
-    cy.visit("https://iaoai.io/hrmsv2/demo/login");
+    cy.visit("https://stage-hrms.iaoai.io/login");
 
     // Type the valid credentials into the input fields
     cy.get('#email').should('be.visible').type(Cypress.env('VALID_EMAIL'));

@@ -14,10 +14,10 @@ describe('Assets', () => {
         cy.get('[data-title="Create Assets"]').click();
 
         cy.get('.choices__inner').eq(0).click();
-        cy.get('.choices__list').should('be.visible').contains('Arshad').click();
+        cy.get('.choices__list').should('be.visible').contains('Abdellatif Hamed').click();
 
         cy.get('.choices__inner').eq(1).click();
-        cy.get('.choices__list').should('be.visible').contains('SuvastuTech_Assets').click({ force: true });
+        cy.get('.choices__list').should('be.visible').contains('Computer').click({ force: true });
 
         cy.get('#amount').clear().type('100');
         cy.get('#support_until').clear().type('2026-10-01');
@@ -26,13 +26,13 @@ describe('Assets', () => {
         cy.get('#submitBtn').click({ force: true });
 
         //Delete the asset
-        cy.get('.ti.ti-trash.text-white.text-white').last().click();
-        cy.wait(2000);
+        cy.get('.ti.ti-trash.text-white.text-white').first().click();
+        cy.wait(1000);
         cy.get('.swal2-confirm.btn.btn-success').click({ force: true });
 
         //Export the asset
         cy.get('.ti.ti-file-export').click();
-        cy.wait(2000);
+        cy.wait(1000);
         cy.get('[data-title="Import  Asset CSV file"]').click({ force: true });
         cy.get('#file').attachFile('assets.csv');
         cy.get('[type="submit"]').click({ force: true });

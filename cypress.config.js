@@ -6,8 +6,8 @@ module.exports = defineConfig({
   screenshotOnRunFailure: true,
   video: true,
 
-  viewportWidth: 1280,
-  viewportHeight: 720, 
+  viewportWidth: 1920,
+  viewportHeight: 1080, 
 
   e2e: {
     retries: {
@@ -15,9 +15,9 @@ module.exports = defineConfig({
       openMode: 0
     },
     env: {
-      VALID_EMAIL: 'muntazim.khan+company@suvastutech.com',
-      VALID_PASSWORD: 'Info@2024#',
+      VALID_EMAIL: 'admin@chs.org',
+      VALID_PASSWORD: 'Dg^^UO9)%dsk${`a',
     },
-    baseUrl: 'https://iaoai.io/hrmsv2/demo/login',
+    baseUrl: 'https://stage-hrms.iaoai.io/login',
   },
 });

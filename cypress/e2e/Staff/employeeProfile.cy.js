@@ -11,13 +11,11 @@ describe('Employee Report', () => {
         cy.contains('a', 'Employee Profile').click();
 
         //Filters functionality
-        cy.get('.ti.ti-filter').click();
-        cy.get('#branch_id').select('37')
-        cy.xpath("//select[@id='department_id']").select('85');
-        cy.get('#designation_id').select('184');
+        cy.xpath("//i[@class='ti ti-filter']").click({ force: true });
+        cy.get('#branch_id').select('1')
+        cy.xpath("//select[@id='department_id']").select('3');
+        cy.get('#designation_id').select('2');
         cy.get('.ti.ti-search').click();
-
-
 
         // View Employee Profile
         cy.get('.btn.btn-outline-primary.mx-5').eq(0).click();

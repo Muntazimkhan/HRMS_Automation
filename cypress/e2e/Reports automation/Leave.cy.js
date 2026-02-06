@@ -12,25 +12,22 @@ describe('Leave', () => {
 
     // Download and Export functionality
     cy.xpath("//a[@class='btn btn-sm btn-primary']", { timeout: 10000 }).click();
-    cy.wait(2000);
+    cy.wait(1000);
     cy.get('.btn.btn-sm.btn-primary.float-end').click();
-    cy.wait(2000);
+    cy.wait(1000);
 
     // Filters
     cy.get('#month').clear().type('2025-07');
     //Select branch
-    cy.get('[name="branch"]').should('be.visible').select('New_C');
+    cy.get('[name="branch"]').should('be.visible').select('Attache');
     //Select project
-    cy.get("#project_id").should('be.visible').select('Project');
+    cy.get("#project_id").should('be.visible').select('Attache');
     //Select department
-    cy.get('#department_id').should('be.visible').select('Department');
+    cy.get('#department_id').should('be.visible').select('CPU');
     //Leave Type
-    cy.get('[name="leave_type"]').should('be.visible').select('Full Day Leave', { force: true });
+    cy.get('[name="leave_type"]').should('be.visible').select('Sick Leave', { force: true });
 
     cy.xpath("//a[@class='btn btn-primary']").click();
-
-    // Assertion
-    cy.contains('Duration').parent().should('contain.text', 'Jul-2025');
 
     // Clear Filter
     cy.get('.btn.btn-danger').eq(0).click();

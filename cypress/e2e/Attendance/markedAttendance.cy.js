@@ -15,9 +15,9 @@ describe('Marked Attendance', () => {
 
         // Filter
         cy.get('#month').type('2025-07', { force: true });
-        cy.get('#branch_id').select('Project', { force: true });
-        cy.get('#department_id').select('Department', { force: true });
-        cy.get('#employee_id').select('Muntazim Khan k36', { force: true });
+        cy.get('#branch_id').select('Attache', { force: true });
+        cy.get('#department_id').select('CPU', { force: true });
+        cy.get('#employee_id').select('Claudia Saleeb', { force: true });
         cy.get('.ti.ti-search').click();
 
         // Export functionality

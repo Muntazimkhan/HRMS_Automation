@@ -1,4 +1,4 @@
-name: 🔁 Run Cypress Tests on Production
+name: Run Cypress Tests on Staging
 
 on:
   push:
@@ -7,6 +7,8 @@ on:
   pull_request:
     branches:
       - main
+  schedule:
+    - cron: '30 4 * * *'   # 10:00 AM IST (4:30 AM UTC)
 
 jobs:
   cypress-run:
@@ -26,4 +28,3 @@ jobs:
 
       - name: Run All Cypress Tests
         run: npx cypress run
-

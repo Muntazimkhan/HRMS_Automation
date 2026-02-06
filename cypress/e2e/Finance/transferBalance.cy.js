@@ -11,8 +11,6 @@ describe('Manage Balance', () => {
     cy.get('.dash-trigger > .dash-submenu > :nth-child(7) > .dash-link').click();
     cy.get('.m-b-10').contains('Manage Transfer Balance').should('be.visible'); 
 
-    //Export
-    // cy.get('.btn.btn-sm.btn-primary').eq(0).click();
     
     //Create a new entry
     cy.get('[data-title="Create New Transfer Balance"]').click();
@@ -27,13 +25,8 @@ cy.get('[data-type="select-one"]').eq(1).click({ force: true });
 cy.get('.choices__list--dropdown')
   .filter(':visible')
   .within(() => {
-    cy.contains('.choices__item--selectable', 'Transfer Account').click({ force: true });
+    cy.contains('.choices__item--selectable', 'Creative Hospitality Services Company').click({ force: true });
   });
-
-
-
-
-
 
     cy.get('#date').type('2025-10-01');
     cy.get('#amount').type('1000');
@@ -41,7 +34,7 @@ cy.get('.choices__list--dropdown')
     // Open the "To Account" dropdown
     cy.get('[data-type="select-one"]').eq(2).click({force: true});
     // Type to search
-    cy.get('[data-type="select-one"]').eq(2).find('input').type('SuvastuTech_Payment{downarrow}{enter}');
+    cy.get('[data-type="select-one"]').eq(2).find('input').type('Cash{downarrow}{enter}');
 
     cy.get('#referal_id').type('123');
     cy.get('#description').type('Test Transfer');
@@ -49,7 +42,7 @@ cy.get('.choices__list--dropdown')
 
     //Delete
     cy.get('.ti.ti-trash.text-white.text-white').first().click();
-    cy.wait(2000);
+    cy.wait(1000);
     cy.get('.swal2-confirm.btn.btn-success').click();
 
     })

@@ -12,13 +12,13 @@ describe('Push Notifications', () => {
 
         //Create a new push notification
         cy.get('[data-title="Send New Push Notification"]').click();
-        cy.get('#bulk_branch_id').select('38')
+        cy.get('#bulk_branch_id').select('Attache');
 
         cy.get('.choices__inner').eq(0).click();
-        cy.get('.choices__list').should('be.visible').contains('SuvastuTech').click();
+        cy.get('.choices__list').should('be.visible').contains('CPU').click();
 
         cy.get('.choices__inner').eq(1).click();
-        cy.get('.choices__list').should('be.visible').contains('Arshad').click();
+        cy.get('.choices__list').should('be.visible').contains('Zaki Takia').click();
 
         cy.get('#title').should('be.visible').type('Test Notification');
         cy.get('#description').should('be.visible').type('Test description for push notification');
@@ -26,6 +26,10 @@ describe('Push Notifications', () => {
 
         //Rsend the push notification
         cy.get('[data-title="Resend Notification"]').last().click();
+
+        //Delete the push notification
+        cy.get('.ti.ti-trash.text-white.text-white').last().click();
+        cy.get('.swal2-confirm.btn.btn-success').click();
 
     })
 })

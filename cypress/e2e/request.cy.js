@@ -12,14 +12,14 @@ describe('Request', () => {
 
         //New Request
         cy.get('[data-title="Create New Request"]').click();
-        cy.get('#request_type_id').should('be.visible').select('19');
+        cy.get('#request_type_id').should('be.visible').select('Asset request');
         cy.get('#title').should('be.visible').type('Test Title', { force: true });
 
         cy.get('.choices__inner').eq(0).click();
         cy.get('.choices__list').should('be.visible').contains('Medium').click();
 
         cy.get('.choices__inner').eq(1).click();
-        cy.get('.choices__list').should('be.visible').contains('Arshad').click();
+        cy.get('.choices__list').should('be.visible').contains('Ahmed Ismail').click();
 
         cy.get('#description').should('be.visible').type('Test Description');
        
@@ -31,7 +31,7 @@ describe('Request', () => {
 
         //Delete Request
         cy.get('.ti.ti-trash.text-white ').first().click();
-        cy.wait(2000);
+        cy.wait(1000);
         cy.get('.swal2-confirm.btn.btn-success').click();
 
     })

@@ -32,7 +32,7 @@ describe('Deposit', () => {
     cy.get('.choices__list--dropdown .choices__item')
       .should('have.length.greaterThan', 0)
       .filter(':visible')
-      .contains('SuvastuTech_Income')
+      .contains('Petty Cash')
       .click({ force: true });
 
     // Select Payer
@@ -50,7 +50,7 @@ describe('Deposit', () => {
     cy.get('.choices__list--dropdown .choices__item')
       .should('have.length.greaterThan', 0)
       .filter(':visible')
-      .contains('SuvastuTech_Payment')
+      .contains('Cash')
       .click({ force: true });
 
     cy.get('#referal_id').should('be.visible').clear().type('123');
@@ -60,7 +60,7 @@ describe('Deposit', () => {
 
     // Delete Deposit
     cy.get('.ti.ti-trash.text-white').last().should('be.visible').click();
-    cy.wait(2000);
+    cy.wait(1000);
     cy.get('.swal2-confirm.btn.btn-success').should('be.visible').click();
   });
 });

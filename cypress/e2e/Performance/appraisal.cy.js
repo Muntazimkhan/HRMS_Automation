@@ -9,16 +9,19 @@ describe('Appraisal', () => {
     cy.get('a.dash-link').contains('Performance').should('be.visible').click();
     cy.contains('a', 'Appraisal').should('be.visible').click();
 
+    //Export
+    cy.get('.ti.ti-file-export').click({force: true});
+
     //Create a new appraisal
-    cy.get(".btn.btn-sm.btn-primary").click()
-    cy.get("#brances").select('37');
-    cy.get("#employee").select('Muntazim Khan k36');
+    cy.get('[data-title="Create New Appraisal"]').click()
+    cy.get("#brances").select('Attache');
+    cy.get("#employee").select('Jamsheed Chullikkoden');
     cy.get("#current_month").type('2025-06');
     cy.get('#remark').type('Testing Remarks');   
 
     //indicators
-    cy.get('[for="technical-4*-19"]').click()
-    cy.get('[for="technical-4-19"]').click()
+    cy.get("label[title='Awesome - 5 stars'][for='technical-5*-1']").click()
+    cy.get("label[title='Pretty good - 4 stars'][for='technical-4*-5']").click()
 
     //submit
     cy.get('#submitBtn').click();

@@ -20,7 +20,7 @@ describe('Payee', () => {
 
     //Delete Payee
     cy.get('.ti.ti-trash.text-white.text-white').first().click();
-    cy.wait(2000);
+    cy.wait(1000);
     cy.get('.swal2-confirm.btn.btn-success').click();
 
 })
