@@ -31,7 +31,7 @@ describe('Indicator', () =>{
     cy.get('#submitBtn').click();
 
     //Delete Indicator
-    cy.get('.ti.ti-trash.text-white.text-white').last().click();
+    cy.get('.ti.ti-trash.text-white.text-white').first().click();
     cy.wait(1000);
     cy.get('.swal2-confirm.btn.btn-success').click();
 

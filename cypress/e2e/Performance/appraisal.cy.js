@@ -14,14 +14,14 @@ describe('Appraisal', () => {
 
     //Create a new appraisal
     cy.get('[data-title="Create New Appraisal"]').click()
-    cy.get("#brances").select('Attache');
-    cy.get("#employee").select('Jamsheed Chullikkoden');
+    cy.get("#brances").select('Creative Hospitality Services');
+    cy.get("#employee").select('Faisal Hejali');
     cy.get("#current_month").type('2025-06');
     cy.get('#remark').type('Testing Remarks');   
 
     //indicators
-    cy.get("label[title='Awesome - 5 stars'][for='technical-5*-1']").click()
-    cy.get("label[title='Pretty good - 4 stars'][for='technical-4*-5']").click()
+    cy.get("label[title='Meh - 3 stars'][for='technical-3-1']").click()
+    cy.get("label[title='Pretty good - 4 stars'][for='technical-4-2']").click()
 
     //submit
     cy.get('#submitBtn').click();

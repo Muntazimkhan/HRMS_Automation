@@ -11,7 +11,7 @@ describe('Job Application', () => {
 
         // Create a mew Job Application
         cy.get('[data-title="Create New Job Application"]').click();
-        cy.get('#jobs').should('be.visible').select('3');
+        cy.get('#jobs').should('be.visible').select('Assistant Storekeeper');
         cy.get('#name').type('Test Name', {force: true});
         cy.get('#email').should('be.visible').type('Test@gmail.com');
         cy.get('#phone').should('be.visible').type('0321654987');
@@ -45,6 +45,10 @@ describe('Job Application', () => {
         cy.get('#job_type').select('Full Time');
         cy.get('#status').select('Pending');
         cy.get('.modal-footer > .btn-primary').click({force: true});
+
+        //Delete Job Application
+        cy.get('.ti.ti-trash.text-white').first().click();
+        cy.get('.swal2-confirm.btn.btn-success').click();
         
     })
 })
