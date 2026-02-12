@@ -17,10 +17,11 @@ describe('Evaluation', () => {
     cy.get(':nth-child(3) > :nth-child(9) > .action-btn').click();
     cy.wait(1000);
     cy.get('.btn.btn-sm.btn-primary').click();    
-    cy.get('#level_1_66').check();
-    cy.get('#level_2_66').check();
-    cy.get('#level_3_66').check();
-    cy.get('#level_4_66').check();
+    cy.get('#level_11_36').check({force: true});
+    cy.get('#level_12_30').check({force: true});
+    cy.get('#level_13_30').check({force: true});
+
+    cy.get("input[value='Create']").click();
 
 })
 })
