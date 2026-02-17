@@ -18,21 +18,20 @@ describe('Indicator', () =>{
     
     //Select Client
     cy.get('.choices__inner').eq(0).click();
-    cy.get('.choices__list--dropdown').contains('Attache Pool Club').click({force: true});
+    cy.get('.choices__list--dropdown').contains('Creative Hospitality Services').click({force: true});
     cy.wait(1000);
     
     // Select Department 
     cy.get('.choices__inner').eq(1).click();
-    cy.get("input[aria-label='Select Department']").type('Back of House {enter}')
+    cy.get("input[aria-label='Select Department']").type('Facility {enter}')
 
     //select designation
-    cy.xpath("//div[@class='designation_div']//select[@id='choices-multiple']").select('Waiter', {force: true});    
+    cy.xpath("//div[@class='designation_div']//select[@id='choices-multiple']").select('CEO', {force: true});    
     cy.get("label[title='Pretty good - 4 stars'][for='technical-4-3']").click();
     cy.get('#submitBtn').click();
 
     //Delete Indicator
     cy.get('.ti.ti-trash.text-white.text-white').first().click();
-    cy.wait(1000);
     cy.get('.swal2-confirm.btn.btn-success').click();
 
     })
