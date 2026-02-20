@@ -19,12 +19,12 @@ describe('Set Salary for Employee', () => {
     cy.contains('Employee Set Salary', { timeout: 10000 }).should('be.visible');
 
     // === Set Basic Salary ===
-    cy.get('.btn.btn-sm.btn-primary').eq(0).should('be.visible').click();
+    cy.get('[data-title="Set Basic Salary"]').should('be.visible').click();
     cy.get('#salary', { timeout: 10000 }).clear().type('6', { delay: 50 });
     cy.get('.modal-footer > .btn-primary').should('be.enabled').click();
 
     // === Set Allowance ===
-    cy.get('.btn.btn-sm.btn-primary').eq(1).should('be.visible').click();
+    cy.get('[data-title="Create Allowance"]').should('be.visible').click();
     cy.get('#allowance_option', { timeout: 10000 }).select('Basic');
     cy.get('#title').clear().type('Health Allowance', { delay: 50 });
     cy.get('#amount').clear().type('10');
@@ -37,7 +37,7 @@ describe('Set Salary for Employee', () => {
     cy.wait(1000)
 
     // === Set Commission ===
-    cy.get('.btn.btn-sm.btn-primary').eq(2).should('be.visible').click();
+    cy.get('[data-title="Create Commission"]').should('be.visible').click();
     cy.get('#title').type('New Commission');
     cy.get('#type').select('Fixed');
     cy.get('#amount').type('50');
@@ -48,7 +48,7 @@ describe('Set Salary for Employee', () => {
     cy.wait(1000)
 
     // === Set Loan ===
-    cy.get('.btn.btn-sm.btn-primary').eq(3).should('be.visible').click();
+    cy.get('[data-title="Create Loan"]').should('be.visible').click();
     cy.get('#title').type('New Loan');
 
     cy.get(':nth-child(2) > .choices > .choices__inner', { timeout: 10000 })
@@ -66,7 +66,7 @@ describe('Set Salary for Employee', () => {
     cy.wait(1000)
 
     // === Set Saturation Deduction ===
-    cy.get('.btn.btn-sm.btn-primary').eq(4).should('be.visible').click();
+    cy.get('[data-title="Create Saturation Deduction"]').should('be.visible').click();
 
     cy.get(':nth-child(1) > .choices > .choices__inner', { timeout: 10000 }).click({ force: true });
     cy.contains('.choices__item', 'GOSI', { timeout: 10000 }).click({ force: true });
@@ -85,7 +85,7 @@ describe('Set Salary for Employee', () => {
     cy.wait(1000)
 
     // === Set Other Payment ===
-    cy.get('.btn.btn-sm.btn-primary').eq(5).should('be.visible').click();
+    cy.get('[data-title="Create Other Payment"]').should('be.visible').click();
     cy.get('#title').type('Other Payment');
 
     cy.get('.choices__inner', { timeout: 10000 }).first().click({ force: true });
@@ -100,7 +100,7 @@ describe('Set Salary for Employee', () => {
     cy.wait(1000)
 
     // === Set Overtime ===
-    cy.get('.btn.btn-sm.btn-primary').eq(6).should('be.visible').click();
+    cy.get('[data-title="Create Overtime"]').should('be.visible').click();
     cy.get('#title').type('Overtime Payment');
     cy.get('#days').type('24');
     cy.get('#hours').type('8');
