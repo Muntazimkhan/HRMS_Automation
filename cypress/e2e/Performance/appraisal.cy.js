@@ -16,7 +16,7 @@ describe('Appraisal', () => {
     cy.get('[data-title="Create New Appraisal"]').click()
     cy.get("#brances").select('Creative Hospitality Services');
     cy.get("#employee").select('Faisal Hejali');
-    cy.get("#current_month").type('2025-06');
+    // cy.get("#current_month").type('2025-06');
     // cy.get('#remark').type('Testing Remarks');   
 
     //indicators
