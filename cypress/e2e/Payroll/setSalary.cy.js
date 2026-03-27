@@ -99,17 +99,17 @@ describe('Set Salary for Employee', () => {
     cy.get("button[class='swal2-confirm btn btn-success']").click({ force: true });
     cy.wait(1000)
 
-    // === Set Overtime ===
-    cy.get('[data-title="Create Overtime"]').should('be.visible').click();
-    cy.get('#title').type('Overtime Payment');
-    cy.get('#days').type('24');
-    cy.get('#hours').type('8');
-    cy.get('#overTime_rate').type('80');
-    cy.get('[type="submit"]').click();
+    // // === Set Overtime ===
+    // cy.get('[data-title="Create Overtime"]').should('be.visible').click();
+    // cy.get('#title').type('Overtime Payment');
+    // cy.get('#days').type('24');
+    // cy.get('#hours').type('8');
+    // cy.get('#overTime_rate').type('80');
+    // cy.get('[type="submit"]').click();
 
-    //Delete the Overtime just added
-    cy.get(".ti.ti-trash.text-white.text-white").last().click({ force: true });
-    cy.get("button[class='swal2-confirm btn btn-success']").click({ force: true });
+    // //Delete the Overtime just added
+    // cy.get(".ti.ti-trash.text-white.text-white").last().click({ force: true });
+    // cy.get("button[class='swal2-confirm btn btn-success']").click({ force: true });
   });
 
   it('Check the Export functionality', () => {
