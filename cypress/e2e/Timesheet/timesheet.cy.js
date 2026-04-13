@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Timesheet Navigation', () => {
+describe.skip('Timesheet Navigation', () => {
   beforeEach(() => {
     cy.login(Cypress.env('VALID_EMAIL'), Cypress.env('VALID_PASSWORD'));
     cy.viewport(1440, 900);

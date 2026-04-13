@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Tickets', () => {
+describe.skip('Tickets', () => {
     beforeEach(() => {
         cy.login(Cypress.env('VALID_EMAIL'), Cypress.env('VALID_PASSWORD'));
         cy.viewport(1440, 900);

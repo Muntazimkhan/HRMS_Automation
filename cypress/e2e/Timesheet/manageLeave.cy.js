@@ -7,8 +7,11 @@ describe('Manage Leave ', () => {
   });
 
   it('Navigates to Manage Leave page through menu', () => {
-    cy.xpath("//li[contains(@class, 'dash-hasmenu')]/a/span[normalize-space()='Timesheet']").click({ force: true });
-    cy.get('[style="display: block; box-sizing: border-box;"] > :nth-child(3) > .dash-link').click({ force: true });
+    // cy.xpath("//li[contains(@class, 'dash-hasmenu')]/a/span[normalize-space()='Timesheet']").click({ force: true });
+    // cy.get('[style="display: block; box-sizing: border-box;"] > :nth-child(3) > .dash-link').click({ force: true });
+
+    cy.get("li#timesheet").click({ force: true });
+    cy.xpath("//a[normalize-space()='Manage Leave']").click({ force: true });
 
     // Export Leaves
     cy.get('.btn.btn-sm.btn-primary').eq(1).click({ force: true });
