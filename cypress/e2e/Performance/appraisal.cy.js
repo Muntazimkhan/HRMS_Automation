@@ -16,8 +16,13 @@ describe('Appraisal', () => {
     cy.get('[data-title="Create New Appraisal"]').click()
     cy.get("#brances").select('Creative Hospitality Services');
     cy.get("#employee").select('Faisal Hejali');
-    // cy.get("#current_month").type('2025-06');
-    // cy.get('#remark').type('Testing Remarks');   
+
+    //Appraisal Type
+    cy.xpath("//select[@id='appraisal_type']").select('Monthly', {force: true});
+
+    // //Competency
+    // cy.xpath("//textarea[@id='competent']").type('Testing Competency');
+   
 
     //indicators
     cy.get("label[title='Meh - 3 stars'][for='technical-3-1']").click()
